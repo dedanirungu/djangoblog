@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf.urls.static import static
+from django.conf import settings
+from . import views
+from django.urls import include
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     
@@ -26,9 +31,9 @@ urlpatterns += [
     path('', views.homepage, name='index'),
     path('', views.homepage, name='home'),
     path('manage/', views.manage_dashboard, name='manage_dashboard'),
-    path('user/profile/', views.profile, name='user-profile'),
+    path('manage/profile/', views.profile, name='manage-profile'),
 
-    path('common/', include('common.urls')),
+    #path('common/', include('common.urls')),
 
     path('blog/', include('blog.urls')),
     path('user/blog/', include('blog.urls-user')),
