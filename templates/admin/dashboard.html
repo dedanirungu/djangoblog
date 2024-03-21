@@ -2,9 +2,176 @@
 
 
 {% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="box pull-up">
+            <div class="box-body bg-img" style="background-image: url({% static 'admin/images/bg-5.png' %});"
+                data-overlay-light="9">
+                <div class="d-lg-flex align-items-center justify-content-between">
+                    <div class="d-md-flex align-items-center mb-30 mb-lg-0 w-p100">
+                        <img src="{% static 'admin/images/svg-icon/color-svg/custom-14.svg' %}"
+                            class="img-fluid max-w-150" alt="" />
+                        <div class="ms-30">
+                            <h4 class="mb-10">Take Advance this opportunity and post a new
+                                article!</h4>
+                            <p class="mb-0 text-fade">
 
-<h1>Welcome to the Admin Dashboard</h1>
-<p>This is the dashboard page for the admin section of your website.</p>
+                                It is a long established fact on posting articles that
+                                <br>an article a day keep website refreshing.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="waves-effect waves-light w-p100 btn btn-primary"
+                            style="white-space: nowrap;">Start Now!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="box no-shadow mb-0 bg-transparent">
+            <div class="box-header no-border px-0">
+                <h4 class="box-title">Top Categories</h4>
+                <ul class="box-controls pull-right d-md-flex d-none">
+                    <li>
+                        <button class="btn btn-primary-light px-10">View All</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box pull-up">
+            <div class="box-body d-flex align-items-center">
+                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-6.png' %}" alt=""
+                    class="align-self-end h-80 w-80">
+                <div class="d-flex flex-column flex-grow-1">
+                    <h5 class="box-title fs-16 mb-2">Angular Class</h5>
+                    <a href="index5.html#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box pull-up">
+            <div class="box-body d-flex align-items-center">
+                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-5.png' %}" alt=""
+                    class="align-self-end h-80 w-80">
+                <div class="d-flex flex-column flex-grow-1">
+                    <h5 class="box-title fs-16 mb-2">Android Class</h5>
+                    <a href="index5.html#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box pull-up">
+            <div class="box-body d-flex align-items-center">
+                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-4.png' %}" alt=""
+                    class="align-self-end h-80 w-80">
+                <div class="d-flex flex-column flex-grow-1">
+                    <h5 class="box-title fs-16 mb-2">Python Class</h5>
+                    <a href="index5.html#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box pull-up">
+            <div class="box-body d-flex align-items-center">
+                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-3.png' %}" alt=""
+                    class="align-self-end h-80 w-80">
+                <div class="d-flex flex-column flex-grow-1">
+                    <h5 class="box-title fs-16 mb-2">laravel </h5>
+                    <a href="index5.html#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row fx-element-overlay">
+    <div class="col-12">
+        <div class="box no-shadow mb-0 bg-transparent">
+            <div class="box-header no-border px-0">
+                <h4 class="box-title">Top Articles</h4>
+                <ul class="box-controls pull-right d-md-flex d-none">
+                    <li>
+                        <button class="btn btn-primary-light px-10">View All</button>
+                    </li>
 
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box">
+            <div class="fx-card-item">
+                <div class="fx-card-avatar fx-overlay-1"> <img
+                        src="{% static 'admin/images/front-end-img/courses/4.jpg' %}" alt="user" class="bber-0 bbsr-0">
+                    <div class="fx-overlay">
+                        <ul class="fx-info">
+                            <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fx-card-content">
+                    <h4 class="box-title mb-0">Manegement</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box">
+            <div class="fx-card-item">
+                <div class="fx-card-avatar fx-overlay-1"> <img
+                        src="{% static 'admin/images/front-end-img/courses/9.jpg' %}" alt="user" class="bber-0 bbsr-0">
+                    <div class="fx-overlay">
+                        <ul class="fx-info">
+                            <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fx-card-content">
+                    <h4 class="box-title mb-0">Networking</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box">
+            <div class="fx-card-item">
+                <div class="fx-card-avatar fx-overlay-1"> <img
+                        src="{% static 'admin/images/front-end-img/courses/8.jpg' %}" alt="user" class="bber-0 bbsr-0">
+                    <div class="fx-overlay">
+                        <ul class="fx-info">
+                            <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fx-card-content">
+                    <h4 class="box-title mb-0">Security</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-12">
+        <div class="box">
+            <div class="fx-card-item">
+                <div class="fx-card-avatar fx-overlay-1"> <img
+                        src="{% static 'admin/images/front-end-img/courses/2.jpg' %}" alt="user" class="bber-0 bbsr-0">
+                    <div class="fx-overlay">
+                        <ul class="fx-info">
+                            <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fx-card-content">
+                    <h4 class="box-title mb-0">Language</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

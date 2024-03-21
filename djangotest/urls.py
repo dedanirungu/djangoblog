@@ -21,13 +21,20 @@ from django.conf.urls.static import static
 from django.conf import settings
 from . import views
 from django.urls import include
+from django.contrib.auth.views import LoginView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+    path("accounts/", include("django.contrib.auth.urls")),
+    path('admin/login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+
 ]
 
+
 urlpatterns += [
+    # Other URL patterns...
+
     path('', views.homepage, name='index'),
     path('', views.homepage, name='home'),
     path('manage/', views.manage_dashboard, name='manage_dashboard'),

@@ -1,0 +1,346 @@
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #EB8153;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}
+
+.deznav .metismenu>li>a .menu-icon {
+    color:#444;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    border: 2px solid #444;
+    border-radius: 25px;
+    line-height: 45px;
+    margin-right: 10px;
+}
+.deznav .metismenu>li>a .menu-icon i{
+    color:#444 !important;
+    font-size: 24px;
+}
+
+[data-sidebar-style="overlay"] .deznav .metismenu > li > a {
+    padding: 5px;
+}
+
+[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .deznav .metismenu li a {
+    padding: 5px;
+}
+
+[data-sidebar-style="full"][data-layout="vertical"] .deznav .metismenu>li:hover>a i,
+[data-sidebar-style="full"][data-layout="vertical"] .deznav .metismenu>li.mm-active>a i {
+    font-weight: 900;
+}
+
+[data-sidebar-style="mini"][data-layout="vertical"] .deznav .metismenu>li:hover>a i,
+[data-sidebar-style="mini"][data-layout="vertical"] .deznav .metismenu>li.mm-active>a i {
+    font-weight: 900;
+}
+
+[data-sidebar-style="overlay"][data-layout="vertical"] .deznav .metismenu>li:hover>a i,
+[data-sidebar-style="overlay"][data-layout="vertical"] .deznav .metismenu>li.mm-active>a i {
+    font-weight: 900;
+}
+
+body,
+.table,
+.deznav .metismenu a,
+.deznav .metismenu>li>a i {
+    color: #333 !important;
+}
+
+.alert-primary {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+.alert {
+    position: relative;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.auth-form {
+    padding: 10px 20px;
+}
+
+.brand-logo img {
+    max-width: 100%;
+    height: 40px;
+}
+
+#nprogress .bar {
+    background: #ffffff !important;
+    height: 2px !important;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px #ffffff, 0 0 5px #ffffff;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: #ffffff !important;
+    border-left-color: #ffffff !important;
+}
+
+#main-wrapper {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+.header,
+.nav-header {
+    height: 4rem;
+}
+
+.header-info span {
+    font-size: 14px;
+}
+
+[data-header-position="fixed"] .content-body {
+    padding-top: 4rem;
+}
+
+
+.modal-xl {
+    max-width: 1400px;
+}
+
+.btn {
+    border-radius: 5px;
+}
+
+.card {
+    border-radius: 7px;
+    border: 1 solid rgba(0, 0, 0, .125);
+}
+
+#keyword-search-form {
+    height: 42px;
+    margin-right: -13px;
+}
+
+.table-search .vue-form-generator fieldset .form-group {
+    float: left;
+    width: 150px;
+}
+
+.table-search .vue-form-generator {
+    float: left;
+    display: inline-block;
+}
+
+.table-search-button {
+    display: inline !important;
+    float: left;
+    width: 150px !important;
+}
+
+.content-body .container-fluid {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.content-body {
+
+    min-height: 1000px;
+}
+
+.table-search .vue-form-generator .form-control {
+    height: auto;
+}
+
+.backend-table .table tbody tr td {
+    font-size: 13px;
+}
+
+.backend-table .table:not(.table-bordered) thead th {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.backend-table .card-body {
+    padding: 5px;
+}
+
+.backend-table .card-header {
+    padding: 5px;
+}
+
+.backend-table .vue-form-generator .form-group label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.backend-table .table-search .vue-form-generator fieldset .form-group {
+    float: left;
+    width: 120px;
+    padding: 0 5px;
+    /* padding: 15px; */
+}
+
+.backend-table .dropdown-dropup .btn {
+    padding: 5px 7px
+}
+
+.table-edit fieldset .form-group label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.table-edit .field-wrap>div {
+    width: 100%;
+}
+
+.table-edit fieldset .form-group input,
+.table-edit fieldset .form-group select {
+    height: 40px;
+}
+
+.table-edit .vd-wrapper {
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.mx-calendar {
+    padding: 0 !important;
+}
+
+.mx-calendar-header,
+.mx-calendar-content {
+    padding: 0 5px;
+}
+
+.mx-calendar-header,
+.mx-time-header {
+    background-color: #1367C8;
+}
+
+.mx-calendar-header,
+.mx-calendar-header button,
+.mx-time-header-title {
+    color: white !important;
+    font-weight: 700;
+}
+
+.mx-time-column .mx-time-item,
+.mx-table-date td,
+.mx-table-date th {
+    font-size: 14px !important;
+}
+
+.mx-calendar-content .cell:hover,
+.mx-time-column .mx-time-item:hover {
+    color: #FFFFFF !important;
+    background: #4071a5 !important;
+}
+
+.mx-datepicker-main {
+    border: none !important;
+
+}
+
+.mx-datepicker-content,
+.mx-datepicker-main,
+.mx-calendar-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.deznav {
+    top: 4em;
+}
+
+.deznav .metismenu ul a:hover,
+.deznav .metismenu ul a:focus,
+.deznav .metismenu ul a.mm-active {
+    color: #EB8153 !important;
+    cursor: pointer;
+}
+
+.deznav .metismenu>li:hover>a,
+.deznav .metismenu>li:focus>a,
+.deznav .metismenu>li.mm-active>a {
+    color: #EB8153 !important;
+    cursor: pointer;
+}
+
+[data-sidebar-style="overlay"] .deznav .metismenu>li:hover>a,
+[data-sidebar-style="overlay"] .deznav .metismenu>li.mm-active>a {
+    color: white !important;
+}
+
+[data-sidebar-position="fixed"][data-layout="vertical"] .deznav .deznav-scroll {
+    overflow-y: scroll;
+
+}
+
+
+[data-sidebar-position="fixed"][data-layout="vertical"] .deznav {
+    overflow-y: scroll;
+}
+
+[data-sidebar-style="full"][data-layout="vertical"] .deznav .metismenu>li>a {
+    padding: 10px 20px;
+}
+
+.deznav::-webkit-scrollbar {
+    width: 3px;
+}
+
+.deznav::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.deznav::-webkit-scrollbar-thumb {
+    background-color: rgb(107, 146, 206);
+    outline: 1px solid rgb(94, 157, 221);
+}
+
+table.table ul.dropdown-menu {
+    position: relative;
+    float: none;
+    z-index: 1000;
+}
+
+
+.table-responsive {
+    overflow-y: visible;
+}
+
+.header-profile .dropdown-toggle {
+    display: flex;
+}
+
+.referral-link {
+    padding: 10px;
+    background: #1367c8;
+    color: white;
+}
