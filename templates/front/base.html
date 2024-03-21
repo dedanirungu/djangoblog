@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="https://themewagon.github.io/news/site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'front/img/favicon.ico' %}">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{% static 'front/css/bootstrap.min.css' %}">
@@ -32,7 +32,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="assets/img/logo/logo.png" alt="">
+                <img src="{% static 'front/img/logo/logo.png' %}" alt="">
             </div>
         </div>
     </div>
@@ -67,12 +67,12 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3 d-none d-md-block">
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="index.html"><img src="{% static 'front/img/logo/logo.png' %}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9">
                             <div class="header-banner f-right ">
-                                <img src="assets/img/gallery/header_card.png" alt="">
+                                <img src="{% static 'front/img/gallery/header_card.png' %}" alt="">
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         <div class="col-xl-8 col-lg-8 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="index.html"><img src="{% static 'front/img/logo/logo.png' %}" alt=""></a>
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
@@ -145,7 +145,7 @@
                             <div class="single-slider">
                                 <div class="trending-top mb-30">
                                     <div class="trend-top-img">
-                                        <img src="assets/img/trending/trending_top2.jpg" alt="">
+                                        <img src="{% static 'front/img/trending/trending_top2.jpg' %}" alt="">
                                         <div class="trend-top-cap">
                                             <span class="bgr" data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">Business</span>
                                             <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
@@ -158,7 +158,7 @@
                             <div class="single-slider">
                                 <div class="trending-top mb-30">
                                     <div class="trend-top-img">
-                                        <img src="assets/img/trending/trending_top02.jpg" alt="">
+                                        <img src="{% static 'front/img/trending/trending_top02.jpg' %}" alt="">
                                         <div class="trend-top-cap">
                                             <span class="bgr" data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">Business</span>
                                             <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
@@ -171,7 +171,7 @@
                             <div class="single-slider">
                                 <div class="trending-top mb-30">
                                     <div class="trend-top-img">
-                                        <img src="assets/img/trending/trending_top03.jpg" alt="">
+                                        <img src="{% static 'front/img/trending/trending_top03.jpg' %}" alt="">
                                         <div class="trend-top-cap">
                                             <span class="bgr" data-animation="fadeInUp" data-delay=".2s" data-duration="1000ms">Business</span>
                                             <h2><a href="latest_news.html" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">Anna Lora Stuns In White At Her Australian Premiere</a></h2>
@@ -189,7 +189,7 @@
                             <div class="col-lg-12 col-md-6 col-sm-6">
                                 <div class="trending-top mb-30">
                                     <div class="trend-top-img">
-                                        <img src="assets/img/trending/trending_top3.jpg" alt="">
+                                        <img src="{% static 'front/img/trending/trending_top3.jpg' %}" alt="">
                                         <div class="trend-top-cap trend-top-cap2">
                                             <span class="bgb">FASHION</span>
                                             <h2><a href="latest_news.html">Secretart for Economic Air
@@ -202,7 +202,7 @@
                             <div class="col-lg-12 col-md-6 col-sm-6">
                                 <div class="trending-top mb-30">
                                     <div class="trend-top-img">
-                                        <img src="assets/img/trending/trending_top4.jpg" alt="">
+                                        <img src="{% static 'front/img/trending/trending_top4.jpg' %}" alt="">
                                         <div class="trend-top-cap trend-top-cap2">
                                             <span class="bgg">TECH </span>
                                             <h2><a href="latest_news.html">Secretart for Economic Air plane that looks like</a></h2>
@@ -259,7 +259,7 @@
                                         <div class="col-xl-6 col-lg-12">
                                             <div class="whats-news-single mb-40 mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_news_details1.png" alt="">
+                                                    <img src="{% static 'front/img/gallery/whats_news_details1.png' %}" alt="">
                                                 </div>
                                                 <div class="whates-caption">
                                                     <h4><a href="latest_news.html">Secretart for Economic Air plane that looks like</a></h4>
@@ -275,7 +275,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img1.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -287,7 +287,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img2.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -299,7 +299,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img3.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorg">FASHION</span>
@@ -311,7 +311,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img4.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorr">FASHION</span>
@@ -331,7 +331,7 @@
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                    <img src="{% static 'front/img/gallery/whats_right_img2.png' %}" alt="">
                                                 </div>
                                                 <div class="whates-caption">
                                                     <h4><a href="index.html#">Secretart for Economic Air
@@ -348,7 +348,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img1.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -360,7 +360,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img2.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -372,7 +372,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img3.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorg">FASHION</span>
@@ -384,7 +384,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img4.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorr">FASHION</span>
@@ -404,7 +404,7 @@
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_right_img4.png" alt="">
+                                                    <img src="{% static 'front/img/gallery/whats_right_img4.png' %}" alt="">
                                                 </div>
                                                 <div class="whates-caption">
                                                     <h4><a href="index.html#">Secretart for Economic Air
@@ -421,7 +421,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img1.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -433,7 +433,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img2.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -445,7 +445,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img3.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorg">FASHION</span>
@@ -457,7 +457,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img4.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorr">FASHION</span>
@@ -477,7 +477,7 @@
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                    <img src="{% static 'front/img/gallery/whats_right_img2.png' %}" alt="">
                                                 </div>
                                                 <div class="whates-caption">
                                                     <h4><a href="index.html#">Secretart for Economic Air
@@ -494,7 +494,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img1.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -506,7 +506,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img2.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -518,7 +518,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img3.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorg">FASHION</span>
@@ -530,7 +530,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img4.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorr">FASHION</span>
@@ -550,7 +550,7 @@
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_news_details1.png" alt="">
+                                                    <img src="{% static 'front/img/gallery/whats_news_details1.png' %}" alt="">
                                                 </div>
                                                 <div class="whates-caption">
                                                     <h4><a href="index.html#">Secretart for Economic Air
@@ -567,7 +567,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img1.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -579,7 +579,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img2.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorb">FASHION</span>
@@ -591,7 +591,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img3.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorg">FASHION</span>
@@ -603,7 +603,7 @@
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
+                                                            <img src="{% static 'front/img/gallery/whats_right_img4.png' %}" alt="">
                                                         </div>
                                                         <div class="whats-right-cap">
                                                             <span class="colorr">FASHION</span>
@@ -623,7 +623,7 @@
                 </div>
                 <!-- Banner -->
                 <div class="banner-one mt-20 mb-30">
-                    <img src="assets/img/gallery/body_card1.png" alt="">
+                    <img src="{% static 'front/img/gallery/body_card1.png' %}" alt="">
                 </div>
                 </div>
                 <div class="col-lg-4">
@@ -632,7 +632,7 @@
                         <div class="single-box">
                             <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="index.html#"><img src="assets/img/news/icon-fb.png" alt=""></a>
+                                    <a href="index.html#"><img src="{% static 'front/img/news/icon-fb.png' %}" alt=""></a>
                                 </div>
                                 <div class="follow-count">  
                                     <span>8,045</span>
@@ -641,7 +641,7 @@
                             </div> 
                             <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="index.html#"><img src="assets/img/news/icon-tw.png" alt=""></a>
+                                    <a href="index.html#"><img src="{% static 'front/img/news/icon-tw.png' %}" alt=""></a>
                                 </div>
                                 <div class="follow-count">
                                     <span>8,045</span>
@@ -650,7 +650,7 @@
                             </div>
                                 <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="index.html#"><img src="assets/img/news/icon-ins.png" alt=""></a>
+                                    <a href="index.html#"><img src="{% static 'front/img/news/icon-ins.png' %}" alt=""></a>
                                 </div>
                                 <div class="follow-count">
                                     <span>8,045</span>
@@ -659,7 +659,7 @@
                             </div>
                             <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="index.html#"><img src="assets/img/news/icon-yo.png" alt=""></a>
+                                    <a href="index.html#"><img src="{% static 'front/img/news/icon-yo.png' %}" alt=""></a>
                                 </div>
                                 <div class="follow-count">
                                     <span>8,045</span>
@@ -677,7 +677,7 @@
                         <!-- Details -->
                         <div class="most-recent mb-40">
                             <div class="most-recent-img">
-                                <img src="assets/img/gallery/most_recent.png" alt="">
+                                <img src="{% static 'front/img/gallery/most_recent.png' %}" alt="">
                                 <div class="most-recent-cap">
                                     <span class="bgbeg">Vogue</span>
                                     <h4><a href="latest_news.html">What to Wear: 9+ Cute Work <br>
@@ -689,7 +689,7 @@
                         <!-- Single -->
                         <div class="most-recent-single">
                             <div class="most-recent-images">
-                                <img src="assets/img/gallery/most_recent1.png" alt="">
+                                <img src="{% static 'front/img/gallery/most_recent1.png' %}" alt="">
                             </div>
                             <div class="most-recent-capt">
                                 <h4><a href="latest_news.html">Scarlett’s disappointment at latest accolade</a></h4>
@@ -699,7 +699,7 @@
                         <!-- Single -->
                         <div class="most-recent-single">
                             <div class="most-recent-images">
-                                <img src="assets/img/gallery/most_recent2.png" alt="">
+                                <img src="{% static 'front/img/gallery/most_recent2.png' %}" alt="">
                             </div>
                             <div class="most-recent-capt">
                                 <h4><a href="latest_news.html">Most Beautiful Things to Do in Sidney with Your BF</a></h4>
@@ -720,7 +720,7 @@
                     <!-- Banner -->
                     <div class="col-lg-3">
                         <div class="home-banner2 d-none d-lg-block">
-                            <img src="assets/img/gallery/body_card2.png" alt="">
+                            <img src="{% static 'front/img/gallery/body_card2.png' %}" alt="">
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -740,7 +740,7 @@
                                         <!-- Single -->
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews1.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weeklyNews1.png' %}" alt="">
                                             </div>
                                             <div class="weekly2-caption">
                                                 <h4><a href="index.html#">Scarlett’s disappointment at latest accolade</a></h4>
@@ -750,7 +750,7 @@
                                         <!-- Single -->
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews2.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weeklyNews2.png' %}" alt="">
                                             </div>
                                             <div class="weekly2-caption">
                                                 <h4><a href="index.html#">Scarlett’s disappointment at latest accolade</a></h4>
@@ -760,7 +760,7 @@
                                         <!-- Single -->
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews3.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weeklyNews3.png' %}" alt="">
                                             </div>
                                             <div class="weekly2-caption">
                                                 <h4><a href="index.html#">Scarlett’s disappointment at latest accolade</a></h4>
@@ -770,7 +770,7 @@
                                         <!-- Single -->
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews2.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weeklyNews2.png' %}" alt="">
                                             </div>
                                             <div class="weekly2-caption">
                                                 <h4><a href="index.html#">Scarlett’s disappointment at latest accolade</a></h4>
@@ -805,7 +805,7 @@
                             <!-- Single -->
                             <div class="single-recent">
                                 <div class="what-img">
-                                    <img src="assets/img/gallery/tranding1.png" alt="">
+                                    <img src="{% static 'front/img/gallery/tranding1.png' %}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <h4><a href="index.html#" > <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4></a></h4>
@@ -817,7 +817,7 @@
                             <!-- Single -->
                             <div class="single-recent">
                                 <div class="what-img">
-                                    <img src="assets/img/gallery/tranding2.png" alt="">
+                                    <img src="{% static 'front/img/gallery/tranding2.png' %}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
@@ -828,7 +828,7 @@
                             <!-- Single -->
                             <div class="single-recent">
                                 <div class="what-img">
-                                    <img src="assets/img/gallery/tranding1.png" alt="">
+                                    <img src="{% static 'front/img/gallery/tranding1.png' %}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <h4><a href="latest_news.html"> <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4></a></h4>
@@ -839,7 +839,7 @@
                             <!-- Single -->
                             <div class="single-recent">
                                 <div class="what-img">
-                                    <img src="assets/img/gallery/tranding2.png" alt="">
+                                    <img src="{% static 'front/img/gallery/tranding2.png' %}" alt="">
                                 </div>
                                 <div class="what-cap">
                                     <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
@@ -862,31 +862,31 @@
                     <div class="video-items-active">
                         <div class="video-items text-center">
                             <video controls>
-                                <source src="assets/video/news2.mp4" type="video/mp4">
+                                <source src="{% static 'front/video/news2.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                         <div class="video-items text-center">
                             <video controls>
-                                <source src="assets/video/news1.mp4" type="video/mp4">
+                                <source src="{% static 'front/video/news1.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                         <div class="video-items text-center">
                             <video controls>
-                                <source src="assets/video/news3.mp4" type="video/mp4">
+                                <source src="{% static 'front/video/news3.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                         <div class="video-items text-center">
                             <video controls>
-                                <source src="assets/video/news1.mp4" type="video/mp4">
+                                <source src="{% static 'front/video/news1.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                         <div class="video-items text-center">
                             <video controls>
-                                <source src="assets/video/news3.mp4" type="video/mp4">
+                                <source src="{% static 'front/video/news3.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -899,7 +899,7 @@
                         <div class="testmonial-nav text-center">
                             <div class="single-video">
                                 <video controls>
-                                    <source src="assets/video/news2.mp4" type="video/mp4">
+                                    <source src="{% static 'front/video/news2.mp4' %}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <div class="video-intro">
@@ -908,7 +908,7 @@
                             </div>
                             <div class="single-video">
                                 <video controls>
-                                    <source src="assets/video/news1.mp4" type="video/mp4">
+                                    <source src="{% static 'front/video/news1.mp4' %}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <div class="video-intro">
@@ -917,7 +917,7 @@
                             </div>
                             <div class="single-video">
                                 <video controls>
-                                    <source src="assets/video/news3.mp4" type="video/mp4">
+                                    <source src="{% static 'front/video/news3.mp4' %}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <div class="video-intro">
@@ -926,7 +926,7 @@
                             </div>
                             <div class="single-video">
                                 <video controls>
-                                    <source src="assets/video/news1.mp4" type="video/mp4">
+                                    <source src="{% static 'front/video/news1.mp4' %}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <div class="video-intro">
@@ -935,7 +935,7 @@
                             </div>
                             <div class="single-video">
                                 <video controls>
-                                    <source src="assets/video/news3.mp4" type="video/mp4">
+                                    <source src="{% static 'front/video/news3.mp4' %}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <div class="video-intro">
@@ -962,7 +962,7 @@
                                     <div class="weekly3-news-active dot-style d-flex">
                                         <div class="weekly3-single">
                                             <div class="weekly3-img">
-                                                <img src="assets/img/gallery/weekly2News1.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weekly2News1.png' %}" alt="">
                                             </div>
                                             <div class="weekly3-caption">
                                                 <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
@@ -971,7 +971,7 @@
                                         </div> 
                                         <div class="weekly3-single">
                                             <div class="weekly3-img">
-                                                <img src="assets/img/gallery/weekly2News2.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weekly2News2.png' %}" alt="">
                                             </div>
                                             <div class="weekly3-caption">
                                                 <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
@@ -980,7 +980,7 @@
                                         </div> 
                                         <div class="weekly3-single">
                                             <div class="weekly3-img">
-                                                <img src="assets/img/gallery/weekly2News3.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weekly2News3.png' %}" alt="">
                                             </div>
                                             <div class="weekly3-caption">
                                                 <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
@@ -989,7 +989,7 @@
                                         </div>
                                         <div class="weekly3-single">
                                             <div class="weekly3-img">
-                                                <img src="assets/img/gallery/weekly2News4.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weekly2News4.png' %}" alt="">
                                             </div>
                                             <div class="weekly3-caption">
                                                 <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
@@ -998,7 +998,7 @@
                                         </div> 
                                         <div class="weekly3-single">
                                             <div class="weekly3-img">
-                                                <img src="assets/img/gallery/weekly2News2.png" alt="">
+                                                <img src="{% static 'front/img/gallery/weekly2News2.png' %}" alt="">
                                             </div>
                                             <div class="weekly3-caption">
                                                 <h4><a href="latest_news.html">What to Expect From the 2020 Oscar Nomin ations</a></h4>
@@ -1021,7 +1021,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-10">
                     <div class="banner-one">
-                        <img src="assets/img/gallery/body_card3.png" alt="">
+                        <img src="{% static 'front/img/gallery/body_card3.png' %}" alt="">
                     </div>
                 </div>
             </div>
@@ -1040,7 +1040,7 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                    <a href="index.html"><img src="{% static 'front/img/logo/logo2_footer.png' %}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -1060,7 +1060,7 @@
                             <!-- Popular post -->
                             <div class="whats-right-single mb-20">
                                 <div class="whats-right-img">
-                                    <img src="assets/img/gallery/footer_post1.png" alt="">
+                                    <img src="{% static 'front/img/gallery/footer_post1.png' %}" alt="">
                                 </div>
                                 <div class="whats-right-cap">
                                     <h4><a href="latest_news.html">Scarlett’s disappointment at latest accolade</a></h4>
@@ -1070,7 +1070,7 @@
                             <!-- Popular post -->
                             <div class="whats-right-single mb-20">
                                 <div class="whats-right-img">
-                                    <img src="assets/img/gallery/footer_post2.png" alt="">
+                                    <img src="{% static 'front/img/gallery/footer_post2.png' %}" alt="">
                                 </div>
                                 <div class="whats-right-cap">
                                     <h4><a href="latest_news.html">Scarlett’s disappointment at latest accolade</a></h4>
@@ -1080,7 +1080,7 @@
                             <!-- Popular post -->
                             <div class="whats-right-single mb-20">
                                 <div class="whats-right-img">
-                                    <img src="assets/img/gallery/footer_post3.png" alt="">
+                                    <img src="{% static 'front/img/gallery/footer_post3.png' %}" alt="">
                                 </div>
                                 <div class="whats-right-cap">
                                     <h4><a href="latest_news.html">Scarlett’s disappointment at latest accolade</a></h4>
@@ -1092,7 +1092,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
                         <div class="single-footer-caption mb-50">
                             <div class="banner">
-                                <img src="assets/img/gallery/body_card4.png" alt="">
+                                <img src="{% static 'front/img/gallery/body_card4.png' %}" alt="">
                             </div>
                         </div>
                     </div>

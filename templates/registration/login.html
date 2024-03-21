@@ -1,0 +1,117 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+
+<form class=" pl-3 pr-3" action="{% url 'login' %}" method="post">
+
+  <h1>Login</h1>
+<!-- /.login-logo -->
+
+<div class="login-box-msg">
+  {% if form.errors %}
+  <p class="mb-0">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+  {% if user.is_authenticated %}
+  <p class="mb-0">Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% endif %}
+  {% endif %}
+</div>
+  {% csrf_token %}
+
+  <div class="input-group mb-3">
+    <input type="text" name="username" class="form-control login-username" placeholder="Username" style="border: none;"
+      autocapitalize="off">
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <span class="fas fa-envelope"></span>
+      </div>
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <input type="password" name="password" class="form-control login-password" placeholder="Password"
+      style="border: none;">
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <span class="fas fa-lock"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="icheck-primary">
+        <input type="checkbox" id="remember">
+        <label for="remember">
+          Remember Me
+        </label>
+      </div>
+    </div>
+    <!-- /.col -->
+    <div class="col-4">
+      <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+    </div>
+    <!-- /.col -->
+  </div>
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<!-- /.social-auth-links -->
+
+<p class="mb-1 ml-3">
+  <a href="{% url 'password_reset' %}">I forgot my password</a>
+</p>
+
+<div class="m-4">
+  <a class="btn btn-primary btn-block" href="{% url 'user_register' %}">Create Account</a>
+</div>
+<!-- /.login-card-body -->
+
+
+<script>
+
+  $(document).ready(function () {
+    $(".login-username").keyup(function (e) {
+      var string_txt = $(this).val()
+      $(this).val(string_txt.toLowerCase())
+    });
+  });
+
+</script>
+
+<style>
+  h1 {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .login-box-msg p {
+    color: red;
+  }
+  .authincation-content .form-control {
+    border-radius: 7px;
+  }
+
+  .authincation-content .input-group {
+    border: 1px solid #6418C3;
+    border-radius: 7px;
+    background: #D7DAE3 !important;
+  }
+
+  .authincation-content input {
+    background: #f9fafc !important;
+    color: black;
+  }
+
+  .authincation-content .input-group-append, .authincation-content .input-group-text {
+    border-radius: 12px !important;
+  }
+
+  .login-username {
+    text-transform: lowercase;
+  }
+</style>
+
+
+{% endblock %}
