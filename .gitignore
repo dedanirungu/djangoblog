@@ -1,0 +1,21 @@
+# Generate gitignore file for django
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media/
+
+# Static files
+staticfiles/
+
+# Secret key
+secret_key.txt
+
+# Development/debugging
+*.bak
+*.swp
+*.swo
+.DS_Store
