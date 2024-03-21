@@ -1,0 +1,46 @@
+{% extends "base_generic_manage.html" %}
+
+{% load render_table from django_tables2 %}
+{% load bootstrap4 %}
+
+{% block title %}
+Blog Category Listing
+{% endblock %}
+
+{% block content %}
+
+{% if not global_recordpicker %}
+<a class="float-right btn btn-success btn-sm" href="{% url "manage_blog_category_create" %}">
+  <i class="fa fa-plus"></i>
+  Add New
+</a>
+{% endif %}
+
+{% if filter %}
+<form action="" method="get" class="filtering-form">
+  {% bootstrap_form filter.form layout='inline' size='small' field_class="p-1 mt-2" %}
+  <input type="hidden" name="recordpicker" value="{{ global_recordpicker }}">
+  <input type="hidden" name="limit" value="{{ limit }}">
+
+
+  <div class="form-group is-valid">
+    <label class="sr-only" for="id_inviter__username">&nbsp;</label>
+    <div class="p-1 mt-2">
+      {% bootstrap_button 'Search'  size='small' %}
+      <a class="btn btn-danger btn-sm" href="{% url 'reset_search' %}?next_to={{ global_current_url }}">Reset</a>
+    </div>
+  </div>
+</form>
+{% endif %}
+
+<div class="table-responsive">
+  {% render_table table %}
+</div>
+
+<!--
+  <select class="form-control form-control-sm" style="max-width: 200px;">
+    <option value="">Some Mass Action</option>
+  </select>
+  -->
+
+{% endblock %}
