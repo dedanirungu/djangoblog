@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-
 class SystemTrackModel(models.Model):
 
     is_modified = models.BooleanField(blank=True, null=True, default=False)

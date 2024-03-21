@@ -1,11 +1,30 @@
 from django.db import models
+from common.models import SystemTrackModel
 
 # Create your models here.
+class Category(SystemTrackModel):
+    id = models.BigAutoField(primary_key=True)
+    title = models.CharField(max_length=255)
+    slug = models.CharField(max_length=191, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    published = models.BooleanField(blank=True, null=True, default=0)
 
-Class Blog(models.Model):   # Class is a keyword in Python, so it is capitalized
-    title = models.CharField(max_length=100)
+    def __str__(self):
+        """String for representing the Model object (in Admin site etc.)"""
+        return self.title   
+    
+class Blog(SystemTrackModel):   
+    id = models.BigAutoField(primary_key=True)
+    category = models.ForeignKey('Category',  on_delete=models.SET_NULL,
+                                 blank=True, null=True, related_name='%(app_label)s_%(class)s_category')
+    title = models.CharField(max_length=255)
+    slug = models.CharField(max_length=191, blank=True, null=True)
+    featured_image = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    hits = models.IntegerField(blank=True, null=True)
     date = models.DateField()
-    description = models.TextField()
+    published = models.BooleanField(blank=True, null=True, default=0)   
     
     def __str__(self):
-        return "%"%self.title
+        """String for representing the Model object (in Admin site etc.)"""
+        return '%s -- %s' % (self.title, self.category.title)
