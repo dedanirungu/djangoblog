@@ -19,4 +19,25 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
 ]
+
+urlpatterns += [
+    path('', views.homepage, name='index'),
+    path('', views.homepage, name='home'),
+    path('manage/', views.manage_dashboard, name='manage_dashboard'),
+    path('user/profile/', views.profile, name='user-profile'),
+
+    path('common/', include('common.urls')),
+
+    path('blog/', include('blog.urls')),
+    path('user/blog/', include('blog.urls-user')),
+    path('manage/blog/', include('blog.urls-manage')),
+]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'common.views.handler404'
+handler500 = 'common.views.handler500'
+
