@@ -71,8 +71,7 @@ class ManageBlogView(PermissionRequiredMixin, SingleTableMixin, FilterView):
 class ManageBlogCreate(PermissionRequiredMixin, CreateView):
     template_name = 'manage/blog_blog_form.html'
     model = Blog
-    fields = ['category', 'business', 'title', 'slug', 'price', 'price', 'featured_image',
-              'description', 'discount', 'location', 'expiry_date', 'hits', 'published',
+    fields = ['title','slug','featured_image','content','hits','date','published',
               ]
     permission_required = 'blog.add_blog'
 
@@ -80,8 +79,7 @@ class ManageBlogCreate(PermissionRequiredMixin, CreateView):
 class ManageBlogUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'manage/blog_blog_form.html'
     model = Blog
-    fields = ['category', 'business', 'title', 'slug', 'price', 'price', 'featured_image',
-              'description', 'discount', 'location', 'expiry_date', 'hits', 'published',
+    fields = ['title', 'slug', 'featured_image', 'content', 'hits', 'date', 'published',
               ]
 
     permission_required = 'blog.change_blog'
@@ -128,14 +126,14 @@ class ManageBlogCategoryView(PermissionRequiredMixin, SingleTableMixin, FilterVi
 class ManageBlogCategoryCreate(PermissionRequiredMixin, CreateView):
     template_name = 'manage/blog_category_form.html'
     model = Category
-    fields = ['title', 'description', 'published', ]
+    fields = ['title', 'slug', 'content', 'published',]
     permission_required = 'blog.add_category'
 
 @method_decorator(login_required(login_url='login'), name="dispatch")
 class ManageBlogCategoryUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'manage/blog_category_form.html'
     model = Category
-    fields = ['title', 'description', 'published', ]
+    fields = ['title', 'slug', 'content', 'published',]
 
     permission_required = 'blog.change_category'
 
@@ -163,18 +161,14 @@ class UserBlogView( SingleTableMixin, FilterView):
 class UserBlogCreate(CreateView):
     template_name = 'user/blog_blog_form.html'
     model = Blog
-    fields = ['category', 'business', 'title', 'slug', 'price', 'price', 'featured_image',
-              'description', 'discount', 'location', 'expiry_date', 'hits', 'published',
-              ]
+    fields = ['title', 'slug', 'featured_image', 'content', 'hits', 'date', 'published',]
     permission_required = 'blog.add_blog'
 
 
 class UserBlogUpdate(UpdateView):
     template_name = 'user/blog_blog_form.html'
     model = Blog
-    fields = ['category', 'business', 'title', 'slug', 'price', 'price', 'featured_image',
-              'description', 'discount', 'location', 'expiry_date', 'hits', 'published',
-              ]
+    fields = ['title', 'slug', 'featured_image', 'content', 'hits', 'date', 'published',]
 
     permission_required = 'blog.change_blog'
 
