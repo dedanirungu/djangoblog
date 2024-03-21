@@ -1,7 +1,7 @@
 from django.db import models
 from common.models import SystemTrackModel
 
-# Create your models here.
+# Model for storing category of blog
 class Category(SystemTrackModel):
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=255)
@@ -13,6 +13,7 @@ class Category(SystemTrackModel):
         """String for representing the Model object (in Admin site etc.)"""
         return self.title   
     
+# Model for storing blos
 class Blog(SystemTrackModel):   
     id = models.BigAutoField(primary_key=True)
     category = models.ForeignKey('Category',  on_delete=models.SET_NULL,
