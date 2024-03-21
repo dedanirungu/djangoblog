@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,14 +9,14 @@
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>EduAdmin - Dashboard</title>
+    <title>Blog Dashboard | {{ title }}</title>
     
 	<!-- Vendors Style-->
-	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="{% static 'admin/css/vendors_css.css' %}">
 	  
 	<!-- Style-->  
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/css/skin_color.css' %}">
      
   </head>
 
@@ -1336,16 +1337,16 @@
 	
 	
 	<!-- Vendor JS -->
-	<script src="js/vendors.min.js"></script>
-	<script src="js/pages/chat-popup.js"></script>
-    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	<script src="{% static 'admin/js/vendors.min.js' %}"></script>
+	<script src="{% static 'admin/js/pages/chat-popup.js' %}"></script>
+    <script src="{% static 'admin/assets/icons/feather-icons/feather.min.js' %}"></script>	
 	
-	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
-	<script src="../assets/vendor_components/fullcalendar/fullcalendar.js"></script>
+	<script src="{% static 'admin/assets/vendor_components/moment/min/moment.min.js' %}"></script>
+	<script src="{% static 'admin/assets/vendor_components/fullcalendar/fullcalendar.js' %}"></script>
 	
 	<!-- EduAdmin App -->
-	<script src="js/template.js"></script>
-	<script src="js/pages/calendar.js"></script>
+	<script src="{% static 'admin/js/template.js' %}"></script>
+	<script src="{% static 'admin/js/pages/calendar.js' %}"></script>
 	
 </body>
 </html>
