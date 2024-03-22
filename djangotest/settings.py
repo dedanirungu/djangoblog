@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django_tables2',
     'django_filters',
     'django_bootstrap5',
+    'dynamic_preferences',
+    # comment the following line if you don't want to use user preferences
+    'dynamic_preferences.users.apps.UserPreferencesConfig',
     'tinymce',
     'common',
     'blog',
@@ -152,7 +155,7 @@ SESSION_EXPIRE_SECONDS = 900
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_TIMEOUT_REDIRECT = '/accounts/logout/'
 
-TINYMCE_JS_URL = os.path.join(STATIC_URL, "path/to/tiny_mce/tiny_mce.js")
+TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js'
 
 TINYMCE_DEFAULT_CONFIG={
     "theme": "silver",

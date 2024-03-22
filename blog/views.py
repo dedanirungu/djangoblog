@@ -126,14 +126,14 @@ class ManageBlogCategoryView(PermissionRequiredMixin, SingleTableMixin, FilterVi
 class ManageBlogCategoryCreate(PermissionRequiredMixin, CreateView):
     template_name = 'manage/blog_category_form.html'
     model = Category
-    fields = ['title', 'slug', 'content', 'published',]
+    fields = ['title', 'slug', 'content', 'published', 'featured_image', 'featured',]
     permission_required = 'blog.add_category'
 
 @method_decorator(login_required(login_url='login'), name="dispatch")
 class ManageBlogCategoryUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'manage/blog_category_form.html'
     model = Category
-    fields = ['title', 'slug', 'content', 'published',]
+    fields = ['title', 'slug', 'content', 'published', 'featured_image', 'featured',]
 
     permission_required = 'blog.change_category'
 

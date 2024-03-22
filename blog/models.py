@@ -1,5 +1,6 @@
 from django.db import models
 from common.models import SystemTrackModel
+from common.classes.DBManager import DBManager
 
 from tinymce.models import HTMLField
 
@@ -9,7 +10,9 @@ class Category(SystemTrackModel):
     title = models.CharField(max_length=255)
     slug = models.CharField(max_length=191, blank=True, null=True)
     content = HTMLField(blank=True, null=True)
-    published = models.BooleanField(blank=True, null=True, default=0)
+    featured_image = models.ImageField(upload_to='', default='images/default.png')
+    featured = models.BooleanField(blank=True, null=True, default=0)   
+    published = models.BooleanField(blank=True, null=True, default=0)   
 
     class Meta:
         ordering = ['-id']
