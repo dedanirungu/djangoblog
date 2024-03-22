@@ -6,12 +6,27 @@ This is a test project for a blog application.
 
 1. Clone the repository: `git clone https://github.com/dedanirungu/djangoblog.git`
 2. Navigate to the project directory: `cd djangoblog`
-3. Install the dependencies: `pip install -r requirements.txt`
 
-## Usage
+## Usage by Docker
 
-1. Start the development server: `python manage.py runserver`
-2. Open your web browser and visit `http://localhost:8000` to view the blog.
+Build the Docker image:
+
+```
+docker build -t my_django_app .
+```
+
+Run the Docker container:
+
+```
+docker run -d -p 8000:8000 my_django_app
+```
+
+
+## Usage by installation
+
+1. Install the dependencies: `pip install -r requirements.txt`
+2. Start the development server: `python manage.py runserver`
+3. Open your web browser and visit `http://localhost:8000` to view the blog.
 
 ## Contributing
 
