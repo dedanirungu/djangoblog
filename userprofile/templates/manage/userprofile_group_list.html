@@ -1,7 +1,7 @@
-{% extends "base_generic_manage.html" %}
+{% extends "manage/base.html" %}
 
 {% load render_table from django_tables2 %}
-{% load bootstrap4 %}
+{% load django_bootstrap5 %}
 
 {% block title %}
 UserProfile Group Listing
@@ -18,14 +18,14 @@ UserProfile Group Listing
 
 {% if filter %}
 <form action="" method="get" class="filtering-form">
-  {% bootstrap_form filter.form layout='inline' size='small' field_class="p-1 mt-2" %}
+  {% bootstrap_form filter.form layout='inline' size='sm' field_class="p-1 mt-2" %}
   <input type="hidden" name="recordpicker" value="{{ global_recordpicker }}">
   <input type="hidden" name="limit" value="{{ limit }}">
 
   <div class="form-group is-valid">
     <label class="sr-only" for="id_inviter__username">&nbsp;</label>
     <div class="p-1 mt-2">
-              {% bootstrap_button 'Search'  size='small' %}
+              {% bootstrap_button 'Search'  size='sm' %}
         <a class="btn btn-danger btn-sm" href="{% url 'reset_search' %}?next_to={{ global_current_url }}">Reset</a>
     </div>
   </div>

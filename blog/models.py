@@ -60,7 +60,6 @@ class Blog(SystemTrackModel):
     featured_image = models.ImageField(upload_to='', default='images/default.png')
     content =HTMLField(blank=True, null=True)
     hits = models.IntegerField(blank=True, null=True)
-    date = models.DateField()
     featured = models.BooleanField(blank=True, null=True, default=0)   
     published = models.BooleanField(blank=True, null=True, default=0)   
 

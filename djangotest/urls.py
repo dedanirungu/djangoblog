@@ -60,6 +60,9 @@ urlpatterns += [
     path('blog/', include('blog.urls')),
     path('user/blog/', include('blog.urls-user')),
     path('manage/blog/', include('blog.urls-manage')),
+
+    path('user/', include('userprofile.urls')),
+    path('manage/user/', include('userprofile.urls-manage')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -71,7 +71,7 @@ class ManageBlogView(PermissionRequiredMixin, SingleTableMixin, FilterView):
 class ManageBlogCreate(PermissionRequiredMixin, CreateView):
     template_name = 'manage/blog_blog_form.html'
     model = Blog
-    fields = ['title','slug','featured_image','content','hits','date','published', 'featured', 'category',
+    fields = ['title','slug','featured_image','content','hits','published', 'featured', 'category',
               ]
     permission_required = 'blog.add_blog'
 
@@ -79,7 +79,7 @@ class ManageBlogCreate(PermissionRequiredMixin, CreateView):
 class ManageBlogUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'manage/blog_blog_form.html'
     model = Blog
-    fields = ['title', 'slug', 'featured_image', 'content', 'hits', 'date', 'published', 'featured', 'category',
+    fields = ['title', 'slug', 'featured_image', 'content', 'hits', 'published', 'featured', 'category',
               ]
 
     permission_required = 'blog.change_blog'

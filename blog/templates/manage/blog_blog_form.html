@@ -13,7 +13,7 @@ Add/Edit Blog
     Back to Listing
 </a>
 
-<form action="" enctype="multipart/form-data" method="post">
+<form class="form-content" action="" enctype="multipart/form-data" method="post">
     {% csrf_token %}
 
     <div class="row">
@@ -35,7 +35,6 @@ Add/Edit Blog
                 </div>
             </div>
             {% bootstrap_field form.hits field_class="blog_hits" %}
-            {% bootstrap_field form.date field_class="blog_date" %}
         </div>
     </div>
 

@@ -1,23 +1,22 @@
-{% extends "base_generic_manage.html" %}
+{% extends "manage/base.html" %}
 
-{% load bootstrap4 %}
+{% load django_bootstrap5 %}
 
-{% load common_extras %}
 
 {% block title %}
 Add/Edit UserProfile Group
 {% endblock %}
 
 {% block content %}
-<a class="btn btn-dark btn-sm" href="{% url "manage_userprofile_group_list" %}{{ 'manage_userprofile_group_list'|queryparams }}">
+<a class="btn btn-dark btn-sm" href="{% url 'manage_userprofile_group_list' %}">
     <i class="fa fa-arrow-left"></i>
     Back to Listing
 </a>
 
-<form action="" enctype="multipart/form-data" method="post">
+<form class="form-content" action="" enctype="multipart/form-data" method="post">
     {% csrf_token %}
 
-    {% bootstrap_form form  size='small' field_class="p-1 mb-3" %}
+    {% bootstrap_form form  size='sm' field_class="p-1 mb-3" %}
     {% bootstrap_button 'Save' button_class="btn-success" extra_classes=" stopresent mb-3" %}
 
 </form>

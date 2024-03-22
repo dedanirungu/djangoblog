@@ -23,9 +23,9 @@
 		<script src="{% static 'tinymce/tinymce.min.js' %}"></script>
 		<script>
 			tinymce.init({
-			  selector: '.tinymce'
+				selector: '.tinymce'
 			});
-		  </script>
+		</script>
 	</head>
 
 	<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
@@ -92,7 +92,8 @@
 													<h4 class="mb-0 mt-0">Notifications</h4>
 												</div>
 												<div>
-													<a href="{% url 'manage_dashboard' %}#" class="text-danger">Clear All</a>
+													<a href="{% url 'manage_dashboard' %}#" class="text-danger">Clear
+														All</a>
 												</div>
 											</div>
 										</div>
@@ -214,7 +215,7 @@
 
 								{% if perms.userprofile.view_user %}
 								<li>
-									<a href="{% url 'manage_users_list' %}">
+									<a href="{% url 'manage_userprofile_user_list' %}">
 										<i class="fas fa-users"></i>
 										<span>Users</span>
 									</a>
@@ -223,21 +224,13 @@
 
 								{% if perms.userprofile.view_group %}
 								<li>
-									<a href="{% url 'manage_users_groups_list' %}">
+									<a href="{% url 'manage_userprofile_group_list' %}">
 										<i class="fas fa-list-ul"></i>
 										<span>Groups</span>
 									</a>
 								</li>
 								{% endif %}
 
-								{% if perms.auth.view_permission %}
-								<li>
-									<a href="{% url 'manage_users_permissions_list' %}">
-										<i class="fas fa-shield-alt"></i>
-										<span>Permissions</span>
-									</a>
-								</li>
-								{% endif %}
 
 								{% endif %}
 							</ul>
@@ -245,15 +238,6 @@
 						</div>
 					</div>
 				</section>
-				<div class="sidebar-footer">
-					<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span
-							class="icon-Settings-2"></span></a>
-					<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span
-							class="icon-Mail"></span></a>
-					<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span
-							class="icon-Lock-overturning"><span class="path1"></span><span
-								class="path2"></span></span></a>
-				</div>
 			</aside>
 
 			{% endif %}
@@ -297,10 +281,10 @@
 							class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>
 				<!-- Create the tabs -->
 				<ul class="nav nav-tabs control-sidebar-tabs">
-					<li class="nav-item"><a href="{% url 'manage_dashboard' %}#control-sidebar-home-tab" data-bs-toggle="tab"
-							class="active"><i class="mdi mdi-message-text"></i></a></li>
-					<li class="nav-item"><a href="{% url 'manage_dashboard' %}#control-sidebar-settings-tab" data-bs-toggle="tab"><i
-								class="mdi mdi-playlist-check"></i></a></li>
+					<li class="nav-item"><a href="{% url 'manage_dashboard' %}#control-sidebar-home-tab"
+							data-bs-toggle="tab" class="active"><i class="mdi mdi-message-text"></i></a></li>
+					<li class="nav-item"><a href="{% url 'manage_dashboard' %}#control-sidebar-settings-tab"
+							data-bs-toggle="tab"><i class="mdi mdi-playlist-check"></i></a></li>
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content">
@@ -323,7 +307,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Tyler</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Tyler</strong></a>
 									</p>
 									<p>Praesent tristique diam...</p>
 									<span>Just now</span>
@@ -336,7 +321,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Luke</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Luke</strong></a>
 									</p>
 									<p>Cras tempor diam ...</p>
 									<span>33 min ago</span>
@@ -349,7 +335,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
 									</p>
 									<p>In posuere tortor vel...</p>
 									<span>42 min ago</span>
@@ -362,7 +349,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
 									</p>
 									<p>In posuere tortor vel...</p>
 									<span>42 min ago</span>
@@ -375,7 +363,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Tyler</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Tyler</strong></a>
 									</p>
 									<p>Praesent tristique diam...</p>
 									<span>Just now</span>
@@ -388,7 +377,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Luke</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Luke</strong></a>
 									</p>
 									<p>Cras tempor diam ...</p>
 									<span>33 min ago</span>
@@ -401,7 +391,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
 									</p>
 									<p>In posuere tortor vel...</p>
 									<span>42 min ago</span>
@@ -414,7 +405,8 @@
 								</a>
 								<div class="media-body">
 									<p class="fs-16">
-										<a class="hover-primary" href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
+										<a class="hover-primary"
+											href="{% url 'manage_dashboard' %}#"><strong>Evan</strong></a>
 									</p>
 									<p>In posuere tortor vel...</p>
 									<span>42 min ago</span>
@@ -582,7 +574,28 @@
 		<script src="{% static 'admin/js/template.js' %}"></script>
 		<script src="{% static 'admin/js/pages/calendar.js' %}"></script>
 
-		
+		<style>
+			.container-full .form-content{
+				padding: 10px;
+				background: white;
+			}
+			.filtering-form {
+				clear: left;
+			}
+
+			.filtering-form div {
+				max-width: 150px;
+				float: left;
+				margin-right: 7px;
+
+			}
+
+			.table-responsive {
+				clear: both;
+				padding: 10px;
+				background: white;
+			}
+		</style>
 
 
 	</body>

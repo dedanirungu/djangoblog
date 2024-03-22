@@ -1,6 +1,6 @@
 {% extends "base_generic_manage.html" %}
 
-{% load bootstrap4 %}
+{% load django_bootstrap5 %}
 
 {% load common_extras %}
 
@@ -9,12 +9,12 @@ Add/Edit UserProfile User
 {% endblock %}
 
 {% block content %}
-<a class="btn btn-dark btn-sm" href="{% url "manage_userprofile_user_list" %}{{ 'manage_userprofile_user_list'|queryparams }}">
+<a class="btn btn-dark btn-sm" href="{% url 'manage_userprofile_user_list' %}">
     <i class="fa fa-arrow-left"></i>
     Back to Listing
 </a>
 
-<form action="{% url 'manage_create_user' %}" enctype="multipart/form-data" method="post">
+<form class="form-content" action="{% url 'manage_create_user' %}" enctype="multipart/form-data" method="post">
 
     {% csrf_token %}
 

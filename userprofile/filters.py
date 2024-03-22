@@ -8,7 +8,7 @@ import django_filters
 class ManageUserprofileUserFilter(django_filters.FilterSet):
     class Meta:
         model = User
-        fields = ['username', 'email','profile__inviter__username', 'profile__gender', 'profile__phone', 'profile__country', 'is_active']
+        fields = ['username', 'email', 'profile__gender', 'profile__phone', 'is_active']
 
 
 class ManageUserprofileGroupFilter(django_filters.FilterSet):

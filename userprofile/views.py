@@ -11,21 +11,18 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_text
+from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from django.http import JsonResponse
 
-from setup.models import Country, Location
 from .models import Profile
 from .forms import UserForm, ProfileForm, ManageUserForm
 from .tokens import account_activation_token
-from affiliate.models import Agreement
 
 from django.utils.dateparse import parse_date
 from datetime import datetime
 
-from newsletter.classes.Mailer import Mailer
 
 from dynamic_preferences.registries import global_preferences_registry
 
@@ -53,166 +50,11 @@ from django.conf import settings
 
 from common.middleware import RequestMiddleware
 
-from common.classes.Common import Common
 from django import forms
 
 import json
 import random
 import re
-
-
-def register(request):
-
-    inviter_id = 0
-    error_message = ''
-    has_error = False
-    registered = False
-
-    mailer = Mailer()
-    user_form = UserForm()
-    profile_form = ProfileForm()
-
-    if request.method == 'POST':
-
-        user_form = UserForm(data=request.POST)
-        profile_form = ProfileForm(data=request.POST)
-
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        inviter_id = request.POST.get('inviter_id')
-        country_id = request.POST.get('country_id')
-
-        code = random.randint(100000, 999999)
-
-        existing_username = User.objects.filter(username=username).all()
-        existing_email = User.objects.filter(email=email).all()
-
-        if existing_username:
-            error_message = error_message + ' Username is Aready Taken.'
-            has_error = True
-
-        if existing_email:
-            error_message = error_message + ' Email is Aready Taken.'
-            has_error = True
-
-        if not has_error and user_form.is_valid() and profile_form.is_valid():
-
-            user_data = user_form.cleaned_data
-            profile_data = profile_form.cleaned_data
-
-            global_preferences = global_preferences_registry.manager()
-            email_verification = global_preferences['userprofile__email_verification']
-            verification_by_code = global_preferences['userprofile__verification_by_code']
-
-            user = User.objects.create_user(
-                username=user_data['username'],
-                first_name=user_data['first_name'],
-                last_name=user_data['last_name'],
-                email=user_data['email'],
-                password=user_data['password'],
-                is_active=False if email_verification else True,
-            )
-
-            for_inviter = User.objects.get(id=1)
-            try:
-                for_inviter = User.objects.get(id=inviter_id)
-            except:
-                pass
-
-            Profile.objects.create(
-                user=user,
-                country=Country.objects.filter(id=country_id).first(),
-                inviter=for_inviter,
-                code=code,
-                gender=int(profile_data['gender']),
-                date_of_birth=profile_data['date_of_birth'],
-                address=profile_data['address'],
-                phone=profile_data['phone'],
-                town=profile_data['town'],
-                location=profile_data['town']
-            ).save()
-
-            group, created = Group.objects.get_or_create(name='Registered')
-            if group:
-                user.groups.add(group)
-
-            if email_verification:
-                domain = get_current_site(request)
-                uid = urlsafe_base64_encode(force_bytes(user.pk))
-                token = account_activation_token.make_token(user)
-
-                email_verification_link = 'http://' + \
-                    str(domain) + '/user/email_verification/' + \
-                    '?uidb64=' + str(uid) + '&token=' + str(token)
-
-                request.session['code'] = code
-                request.session['registered_email'] = user.email
-
-                email_context = {
-                    'user': user,
-                    'to': user.email,
-                    'domain': domain,
-                    'uid': uid,
-                    'token': token,
-                    'code': code,
-                    'email_verification_link': email_verification_link,
-                }
-
-                if verification_by_code:
-                    mailer.sendTemplateMail(
-                        'user.email.verification.by.code', email_context)
-                else:
-                    mailer.sendTemplateMail(
-                        'user.email.verification', email_context)
-
-            registered = True
-
-            return redirect('register_thank')
-        else:
-            error_message = error_message + \
-                ' '.join([' '.join(x for x in l)
-                          for l in list(user_form.errors.values())])
-            error_message = error_message + \
-                ' '.join([' '.join(x for x in l)
-                          for l in list(profile_form.errors.values())])
-            has_error = True
-
-    inviter = None
-
-    if 'inviter' in request.session:
-        try:
-            inviter = User.objects.get(username=request.session['inviter'])
-        except:
-            pass
-    # else:
-    #    inviter = User.objects.get(id=1)
-
-    if inviter_id:
-        inviter = User.objects.get(id=inviter_id)
-
-    agreements = Agreement.objects.filter(target='registration').all()
-
-    temp_inviter = {}
-    temp_inviter_id = None
-    if inviter is not None:
-        temp_inviter = {
-            'first_name': inviter.first_name,
-            'last_name': inviter.last_name,
-            'username': inviter.username,
-            'email': inviter.email,
-            'phone': inviter.profile.phone if hasattr(inviter, 'profile') else '',
-            'id': inviter.id,
-        }
-
-    return render(request, 'registration.html',
-                  {'user_form': user_form,
-                   'profile_form': profile_form,
-                   'has_error': has_error,
-                   'error_message': error_message,
-                   'inviter': json.dumps(temp_inviter),
-                   'agreements': agreements,
-                   'inviter_id': inviter_id if inviter_id else temp_inviter_id is not None if temp_inviter_id else None,
-                   'registered': registered})
 
 
 def manage_activate_user(request):
@@ -227,63 +69,6 @@ def manage_activate_user(request):
     return redirect('manage_userprofile_user_list')
 
 
-@staff_member_required
-@login_required
-def manage_generate_user(request):
-
-    if request.method == 'POST':
-
-        prefix = request.POST.get('prefix')
-        inviter = request.POST.get('inviter')
-        total = request.POST.get('total')
-
-        try:
-            inviter_obj = User.objects.get(username=inviter)
-        except:
-            error_message = " Error: Inviter Does not exist"
-            messages.add_message(request, messages.ERROR, error_message)
-            return redirect('manage_userprofile_user_list')
-
-        for i in range(1, int(total)+1):
-            try:
-
-                year = random.randint(1960, 2000)
-                month = random.randint(1, 12)
-                date = random.randint(1, 28)
-
-                country_id = random.randint(1, 200)
-
-                try:
-                    country = Country.objects.filter(id=country_id).first()
-                except:
-                    country = Country.objects.filter(id=1).first()
-
-                user = User.objects.create_user(
-                    username=prefix + str(i),
-                    first_name=prefix + str(i),
-                    last_name=prefix + str(i),
-                    email=prefix + str(i)+'@' + prefix + str(i)+'.com',
-                    password=prefix + str(i),
-                    is_active=True,
-                )
-
-                Profile.objects.create(
-                    user=user,
-                    country=country,
-                    inviter=inviter_obj,
-                    gender=random.randint(0, 1),
-                    date_of_birth=datetime(year, month, date),
-                    address=str(country),
-                    phone='0722'+str(random.randint(000000, 999999)),
-                    town=str(country),
-                    location=str(country)
-                ).save()
-
-            except:
-                error_message = " Error: While adding " + prefix + str(i)
-                messages.add_message(request, messages.ERROR, error_message)
-
-    return redirect('manage_userprofile_user_list')
 
 
 @staff_member_required
@@ -296,9 +81,6 @@ def manage_create_user(request):
         profile_form = ProfileForm(data=request.POST)
 
         if user_form.is_valid() and profile_form.is_valid():
-
-            inviter_id = request.POST.get('inviter')
-            country_id = request.POST.get('country')
 
             user_data = user_form.cleaned_data
             profile_data = profile_form.cleaned_data
@@ -323,8 +105,6 @@ def manage_create_user(request):
 
             Profile.objects.create(
                 user=user,
-                country=Country.objects.filter(id=country_id).first(),
-                inviter=inviter,
                 gender=int(profile_data['gender']),
                 date_of_birth=profile_data['date_of_birth'],
                 address=profile_data['address'],
@@ -350,43 +130,6 @@ def manage_create_user(request):
             messages.add_message(request, messages.ERROR, error_message)
 
             return redirect('manage_userprofile_user_create')
-
-
-def emailVerificationView(request):
-
-    uidb64 = request.GET.get('uidb64')
-    token = request.GET.get('token')
-
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
-
-    status = False
-    title = message = ''
-
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
-        # return redirect('home')
-        status = True
-        title = 'Email Verification Successful'
-        message = 'Thank you for your email confirmation. Now you can login your account.'
-    else:
-        status = False
-        title = 'Email Verification Failed'
-        message = 'Activation link is invalid!'
-
-    context = {
-        'status': status,
-        'title': title,
-        'message': message,
-    }
-
-    # Render the HTML template index.html with the data in the context variable
-    return render(request, 'email-verification.html', context=context)
 
 
 def registerThankView(request):
@@ -531,39 +274,6 @@ def manage_change_user_groups(request):
     return JsonResponse(message)
 
 
-def fetchInviterView(request):
-
-    inviter_username = request.GET.get('inviter_username')
-
-    inviter = None
-
-    try:
-        inviter = User.objects.get(username=inviter_username)
-    except:
-        pass
-
-    if inviter:
-        temp_inviter = {
-            'first_name': inviter.first_name,
-            'last_name': inviter.last_name,
-            'username': inviter.username,
-            'email': re.sub(r'(?<=\w{4})\w(?=\w*@)', 'x', inviter.email) if inviter.email else '' ,
-            'phone': re.sub(r'(?<=\d{4})\d(?=\d{3})', 'x', inviter.profile.phone) if hasattr(inviter, 'profile') and inviter.profile.phone else '',
-            'id': inviter.id,
-        }
-    else:
-        temp_inviter = {
-            'first_name': '',
-            'last_name': '',
-            'username': '',
-            'email': '',
-            'phone': '',
-            'id': 0,
-        }
-
-    return JsonResponse(temp_inviter)
-
-
 def checkUserView(request):
 
     has_error = False
@@ -591,27 +301,6 @@ def checkUserView(request):
 
     return JsonResponse(temp_data)
 
-
-def locationApi(request):
-
-    country_id = request.GET.get('country_id')
-    locations_arr = []
-
-    country = Country.objects.filter(id=country_id).first()
-    locations = Location.objects.filter(country_code=country.code).all()
-
-    for location in locations:
-
-        location_obj = {
-            'id': location.id,
-            'name': location.name,
-            'country_code': location.country_code,
-            'state_code': location.state_code,
-        }
-
-        locations_arr.append(location_obj)
-
-    return JsonResponse(locations_arr, safe=False)
 
 
 """xxxxxxxxxxxxxxxxxxxxx Manage Section xxxxxxxxxxxxxxxxxxxx"""
@@ -663,18 +352,10 @@ class ManageUserprofileUserCreate(PermissionRequiredMixin, CreateView):
         field_attr = {'class': 'record-picker',
                       'readonly': True, 'addon_after_class': None}
 
-        common = Common()
 
         context = super().get_context_data(**kwargs)
         user_form = ManageUserForm()
         profile_form = ProfileForm()
-
-        inviter_attr = field_attr.copy()
-        inviter_attr['addon_after'] = common.recordPickerButton(
-            'inviter', 'manage_userprofile_user_list')
-
-        profile_form.fields['inviter'].widget = forms.TextInput(
-            attrs=inviter_attr)
 
         context['user_form'] = user_form
         context['profile_form'] = profile_form
@@ -710,21 +391,17 @@ class ManageUserprofileUserUpdate(PermissionRequiredMixin, UpdateView):
 class ManageUserprofileProfileUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'manage/userprofile_profile_form.html'
     model = Profile
-    fields = ['gender', 'date_of_birth', 'country', 'inviter',
+    fields = ['gender', 'date_of_birth',
               'address', 'phone', 'town', 'location', 'blocked']
 
     permission_required = 'userprofile.change_user'
 
     def get_form(self, form_class=None):
 
-        common = Common()
 
         field_attr = {'class': 'record-picker',
                       'readonly': True, 'addon_after_class': None}
 
-        inviter_attr = field_attr.copy()
-        inviter_attr['addon_after'] = common.recordPickerButton(
-            'inviter', 'manage_userprofile_user_list')
 
         form = super(ManageUserprofileProfileUpdate, self).get_form(form_class)
         form.fields['inviter'].widget = forms.TextInput(attrs=inviter_attr)

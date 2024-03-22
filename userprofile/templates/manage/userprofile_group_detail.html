@@ -1,6 +1,6 @@
-{% extends "base_generic_manage.html" %}
+{% extends "manage/base.html" %}
 
-{% load bootstrap4 %}
+{% load django_bootstrap5 %}
 
 {% block title %}
 UserProfile Group Detail
@@ -8,10 +8,10 @@ UserProfile Group Detail
 
 {% block content %}
 
-<form action="" enctype="multipart/form-data" method="post">
+<form class="form-content" action="" enctype="multipart/form-data" method="post">
     {% csrf_token %}
 
-    {% bootstrap_form form  size='small' field_class="p-1 mb-3" %}
+    {% bootstrap_form form  size='sm' field_class="p-1 mb-3" %}
     {% bootstrap_button 'Save' button_class="btn-success" extra_classes=" stopresent mb-3" %}
 
     {% if object.pk %}

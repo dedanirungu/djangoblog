@@ -8,7 +8,6 @@ urlpatterns = [
 
     path('activate_user/', views.manage_activate_user, name='manage_activate_user'),
     path('create_user/', views.manage_create_user, name='manage_create_user'),
-    path('generate_user/', views.manage_generate_user, name='manage_generate_user'),
     path('change_user_groups/', views.manage_change_user_groups, name='manage_change_user_groups'),
     path('change_group_permissions/', views.manage_change_group_permissions, name='manage_change_group_permissions'),
     path('change_password/', views.manage_change_password, name='manage_change_password'),

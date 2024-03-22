@@ -19,15 +19,10 @@ Blog Listing
 {% if filter %}
 <form action="" method="get" class="filtering-form">
   {% bootstrap_form filter.form layout='inline' size='sm' field_class="p-1 mt-2" %}
-  <input type="hidden" name="recordpicker" value="{{ global_recordpicker }}">
-  <input type="hidden" name="limit" value="{{ limit }}">
-
-
-  
 
   <div class="form-group is-valid">
     <label class="sr-only" for="id_inviter__username">&nbsp;</label>
-    <div class="p-1 mt-2">
+    <div class="p-1">
       {% bootstrap_button 'Search'  size='sm' %}
       <a class="btn btn-danger btn-sm" href="{% url 'reset_search' %}?next_to={{ global_current_url }}">Reset</a>
     </div>
