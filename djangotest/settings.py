@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'tinymce',
     'common',
     'blog',
+    'userprofile',
 
 ]
 
