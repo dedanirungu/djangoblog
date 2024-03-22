@@ -18,14 +18,20 @@
     <div class="row">
         <div class="col-sm-8">
             {% bootstrap_field form.title field_class="blog_category_title" %}
-            {% bootstrap_field form.slug field_class="blog_category_slug" %}
             {% bootstrap_field form.content field_class="blog_category_content" %}
         </div>
         
         <div class="col-sm-4">
+            {% bootstrap_field form.slug field_class="blog_category_slug" %}
             {% bootstrap_field form.featured_image field_class="blog_category_featured_image" %}
-            {% bootstrap_field form.featured field_class="blog_category_featured" %}
-            {% bootstrap_field form.published field_class="blog_category_published" %}
+            <div class="row">
+                <div class="col-sm-6">
+                    {% bootstrap_field form.featured field_class="blog_featured" %}
+                </div>
+                <div class="col-sm-6">
+                    {% bootstrap_field form.published field_class="blog_published" %}
+                </div>
+            </div>
         </div>
     </div>
 

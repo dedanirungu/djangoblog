@@ -1,6 +1,12 @@
+
 from django.db import models
+from django.contrib import messages
+from django.urls import reverse  # To generate URLS by reversing URL patterns
+
+from django.contrib.auth.models import User
 from common.models import SystemTrackModel
 from common.classes.DBManager import DBManager
+from common.middleware import RequestMiddleware
 
 from tinymce.models import HTMLField
 
@@ -23,29 +29,20 @@ class Category(SystemTrackModel):
         db_manager.save(self)
         super(Category, self).save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        request_middleware = RequestMiddleware(get_response=None)
-        request = request_middleware.get_request()
+    def get_absolute_url(self, request=None):
 
-        messages.add_message(request, messages.SUCCESS, 'Record Created Successfully')
         """Returns the url to access a particular author instance."""
         return reverse('manage_blog_category_update', args=[str(self.id)])
 
 
-    def get_delete_url(self):
-        request_middleware = RequestMiddleware(get_response=None)
-        request = request_middleware.get_request()
+    def get_delete_url(self, request=None):
 
-        messages.add_message(request, messages.ERROR, 'Record Deleted Successfully')
         """Returns the url to access a particular author instance."""
         return reverse('manage_blog_category_delete', args=[str(self.id)])
 
 
-    def get_update_url(self):
-        request_middleware = RequestMiddleware(get_response=None)
-        request = request_middleware.get_request()
+    def get_update_url(self, request=None):
 
-        messages.add_message(request, messages.SUCCESS, 'Record Updated Successfully')
         """Returns the url to access a particular author instance."""
         return reverse('manage_blog_category_update', args=[str(self.id)])       
 
@@ -76,29 +73,20 @@ class Blog(SystemTrackModel):
         db_manager.save(self)
         super(Blog, self).save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        request_middleware = RequestMiddleware(get_response=None)
-        request = request_middleware.get_request()
+    def get_absolute_url(self, request=None):
 
-        messages.add_message(request, messages.SUCCESS, 'Record Created Successfully')
         """Returns the url to access a particular author instance."""
         return reverse('manage_blog_update', args=[str(self.id)])
 
 
-    def get_delete_url(self):
-        request_middleware = RequestMiddleware(get_response=None)
-        request = request_middleware.get_request()
+    def get_delete_url(self, request=None):
 
-        messages.add_message(request, messages.ERROR, 'Record Deleted Successfully')
         """Returns the url to access a particular author instance."""
         return reverse('manage_blog_delete', args=[str(self.id)])
 
 
-    def get_update_url(self):
-        request_middleware = RequestMiddleware(get_response=None)
-        request = request_middleware.get_request()
+    def get_update_url(self, request=None):
 
-        messages.add_message(request, messages.SUCCESS, 'Record Updated Successfully')
         """Returns the url to access a particular author instance."""
         return reverse('manage_blog_update', args=[str(self.id)])   
     
