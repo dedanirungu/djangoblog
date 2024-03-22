@@ -114,7 +114,6 @@ def blog(request, id):
     """View function for blog page of site."""
 
     blog = Blog.objects.get(id=id)
-    print(blog.content)
 
     context = {
         'title': "Blogs",
