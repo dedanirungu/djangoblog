@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="{% static 'admin/css/skin_color.css' %}">
 		<link rel="stylesheet" href="{% static 'front/css/fontawesome-all.min.css' %}">
 
+		<script src="{% static 'front/js/vendor/jquery-1.12.4.min.js' %}"></script>
 		<script src="{% static 'tinymce/tinymce.min.js' %}"></script>
 		<script>
 			tinymce.init({
@@ -575,10 +576,12 @@
 		<script src="{% static 'admin/js/pages/calendar.js' %}"></script>
 
 		<style>
-			.container-full .form-content{
+			.container-full .form-content {
 				padding: 10px;
 				background: white;
+				margin-top: 10px;
 			}
+
 			.filtering-form {
 				clear: left;
 			}

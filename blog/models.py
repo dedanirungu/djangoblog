@@ -16,7 +16,7 @@ class Category(SystemTrackModel):
     title = models.CharField(max_length=255)
     slug = models.CharField(max_length=191, blank=True, null=True)
     content = HTMLField(blank=True, null=True)
-    featured_image = models.ImageField(upload_to='', default='images/default.png')
+    featured_image = models.ImageField(upload_to='', default='uploads/default.png')
     featured = models.BooleanField(blank=True, null=True, default=0)   
     published = models.BooleanField(blank=True, null=True, default=0)   
 
@@ -57,7 +57,7 @@ class Blog(SystemTrackModel):
                                  blank=True, null=True, related_name='%(app_label)s_%(class)s_category')
     title = models.CharField(max_length=255)
     slug = models.CharField(max_length=191, blank=True, null=True)
-    featured_image = models.ImageField(upload_to='', default='images/default.png')
+    featured_image = models.ImageField(upload_to='', default='uploads/default.png')
     content =HTMLField(blank=True, null=True)
     hits = models.IntegerField(blank=True, null=True)
     featured = models.BooleanField(blank=True, null=True, default=0)   

@@ -85,6 +85,35 @@ def homepage(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'front/homepage.html', context=context)
 
+def about(request):
+    """View function for dashboard of site."""
+    context = {
+        'title': "Top Blog Test App",
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'front/about.html', context=context)
+
+def blog(request):
+    """View function for dashboard of site."""
+    context = {
+        'title': "Top Blog Test App",
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'front/blog.html', context=context)
+
+def contact(request):
+    """View function for dashboard of site."""
+    context = {
+        'title': "Top Blog Test App",
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'front/contact.html', context=context)
+    
+
+
 def resetSearch(request):
 
     next_to = request.GET.get('next_to')

@@ -45,6 +45,9 @@ urlpatterns += [
 
     path('', views.homepage, name='index'),
     path('', views.homepage, name='home'),
+    path('', views.blog, name='blog'),
+    path('', views.contact, name='contact'),
+    path('', views.about, name='about'),
     path('manage/', views.manage_dashboard, name='manage_dashboard'),
     path('manage/profile/', views.profile, name='manage-profile'),
     path('accounts/profile/', views.profile, name='accounts-profile'),

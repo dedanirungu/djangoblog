@@ -223,23 +223,32 @@ def manage_change_group_permissions(request):
     """View function for homepage of site."""
 
     if request.POST:
+        posted = request.POST
         group_id = request.POST.get('group_id')
         action = request.POST.get('action')
-        permission = request.POST.get('permission')
-
-        permission_arr = permission.split(':')
 
         group = Group.objects.filter(id=group_id).first()
 
-        content_type = ContentType.objects.get(
-            app_label=permission_arr[0], model=permission_arr[1])
-        permission = Permission.objects.get(
-            codename=permission_arr[2], content_type=content_type)
+        # Or access all POST parameters
+        for key, permission in request.POST.items():
+                   
+            if key.startswith('permission'):
+                # Perform action if the key starts with "permission"
+                # For example, you can execute some code here
 
-        if action == 'add':
-            group.permissions.add(permission)
-        else:
-            group.permissions.remove(permission)
+                permission_arr = permission.split(':')
+
+                content_type = ContentType.objects.get(
+                    app_label=permission_arr[0], model=permission_arr[1])
+                permission = Permission.objects.get(
+                    codename=permission_arr[2], content_type=content_type)
+
+                if action == 'add':
+                    group.permissions.add(permission)
+                else:
+                    group.permissions.remove(permission)
+
+                pass
 
     message = {
         'status': 200,

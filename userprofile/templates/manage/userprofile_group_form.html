@@ -41,7 +41,8 @@ Add/Edit UserProfile Group
             {% for permission in module.permissions %}
             <div class="form-check">
                 <input type="checkbox" value="{{ app.name }}:{{ module.name }}:{{ permission.codename }}"
-                    class="form-check-input" id="{{ app.name }}_{{ module.name }}_{{ permission.codename }}"
+                    class="form-check-input" name="permission" 
+                    id="{{ app.name }}_{{ module.name }}_{{ permission.codename }}"
                     {% if permission in group_permissions %} checked {% endif %}>
                 <label class="form-check-label"
                     for="{{ app.name }}_{{ module.name }}_{{ permission.codename }}">{{ permission.name }}</label>
@@ -54,7 +55,6 @@ Add/Edit UserProfile Group
         {% endfor %}
     </div>
 
-    {% bootstrap_button 'Save' button_class="btn-success" extra_classes=" stopresent mb-3" %}
 
     <input class="group_id" type="hidden" name="group_id" value="{{ object.id }}" />
 
@@ -62,19 +62,19 @@ Add/Edit UserProfile Group
 
 <script>
     var action = 'add'
-    var group_id = $('.group_id').val()
-    var csrfmiddlewaretoken = $('.csrf_token input').val()
+    var group_id = jQuery('.group_id').val()
+    var csrfmiddlewaretoken = jQuery('.csrf_token input').val()
 
-    $('input:checkbox').change(function () {
+    jQuery('input:checkbox').change(function () {
 
-        var permission_str = $(this).val()
+        var permission_str = jQuery(this).val()
 
         if (this.checked)
             action = 'add'
         else
             action = 'remove'
 
-        $.ajax({
+            jQuery.ajax({
                 method: "POST",
                 url: "{% url 'manage_change_group_permissions' %}",
                 data: {
@@ -88,8 +88,8 @@ Add/Edit UserProfile Group
                 console.log(msg);
             })
             .fail(function (xhr, err) {
-                var responseTitle = $(xhr.responseText).filter('title').get(0);
-                alert($(responseTitle).text() + "\n" + formatErrorMessage(xhr, err));
+                var responseTitle = jQuery(xhr.responseText).filter('title').get(0);
+                alert(jQuery(responseTitle).text() + "\n" + formatErrorMessage(xhr, err));
             });
     });
 
