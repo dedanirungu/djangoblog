@@ -21,14 +21,6 @@
         <div class="col-sm-6">
             <h5 class="text-center bg-light">Profile Details</h5>
 
-            <div class="recordpicker-input">
-                {% bootstrap_field form.inviter  field_class="profile_inviter" %}
-                <div class="recordpicker-text">
-                    {{ object.inviter }}
-                </div>
-            </div>
-
-
             {% bootstrap_field form.gender  field_class="profile_gender" %}
             {% bootstrap_field form.date_of_birth  field_class="profile_date_of_birth" %}
             {% bootstrap_field form.blocked  field_class="profile_blocked" %}
@@ -38,7 +30,6 @@
         <div class="col-sm-6">
             <h5 class="text-center bg-light">Other Details</h5>
             
-            {% bootstrap_field form.country  field_class="profile_country" %}
             {% bootstrap_field form.address  field_class="profile_address" %}
             {% bootstrap_field form.phone  field_class="profile_phone" %}
             {% bootstrap_field form.town  field_class="profile_town" %}

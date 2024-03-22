@@ -413,7 +413,6 @@ class ManageUserprofileProfileUpdate(PermissionRequiredMixin, UpdateView):
 
 
         form = super(ManageUserprofileProfileUpdate, self).get_form(form_class)
-        form.fields['inviter'].widget = forms.TextInput(attrs=inviter_attr)
         return form
 
     def get_object(self, *args, **kwargs):

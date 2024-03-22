@@ -59,8 +59,13 @@ def manage_users_permissions_list(request):
 @login_required
 def manage_dashboard(request):
     """View function for dashboard of site."""
+
+    categories = Category.objects.all()
+    top_four = Blog.objects.all().order_by('-created_at')[:4]
     context = {
         'title': "Manage Dashboard",
+        'categories': categories,
+        'top_four': top_four
     }
 
     # Render the HTML template index.html with the data in the context variable

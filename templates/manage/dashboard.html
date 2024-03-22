@@ -43,55 +43,21 @@
             </div>
         </div>
     </div>
+    {% for category in categories %}
     <div class="col-lg-3 col-md-6 col-12">
         <div class="box pull-up">
             <div class="box-body d-flex align-items-center">
-                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-6.png' %}" alt=""
-                    class="align-self-end h-80 w-80">
+                <img src="/uploads/{{ category.featured_image }}" alt="" class="align-self-end h-80 w-80 rounded-circle" style="margin-right:5px">
                 <div class="d-flex flex-column flex-grow-1">
-                    <h5 class="box-title fs-16 mb-2">Angular Class</h5>
-                    <a href="index5.html#">Learn more</a>
+                    <h5 class="box-title fs-16 mb-2">{{ category.title }}</h5>
+                    <a href="#">Learn more</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-12">
-        <div class="box pull-up">
-            <div class="box-body d-flex align-items-center">
-                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-5.png' %}" alt=""
-                    class="align-self-end h-80 w-80">
-                <div class="d-flex flex-column flex-grow-1">
-                    <h5 class="box-title fs-16 mb-2">Android Class</h5>
-                    <a href="index5.html#">Learn more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-12">
-        <div class="box pull-up">
-            <div class="box-body d-flex align-items-center">
-                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-4.png' %}" alt=""
-                    class="align-self-end h-80 w-80">
-                <div class="d-flex flex-column flex-grow-1">
-                    <h5 class="box-title fs-16 mb-2">Python Class</h5>
-                    <a href="index5.html#">Learn more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-12">
-        <div class="box pull-up">
-            <div class="box-body d-flex align-items-center">
-                <img src="{% static 'admin/images/front-end-img/courses/cor-logo-3.png' %}" alt=""
-                    class="align-self-end h-80 w-80">
-                <div class="d-flex flex-column flex-grow-1">
-                    <h5 class="box-title fs-16 mb-2">laravel </h5>
-                    <a href="index5.html#">Learn more</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </div>
+
 <div class="row fx-element-overlay">
     <div class="col-12">
         <div class="box no-shadow mb-0 bg-transparent">
@@ -106,11 +72,13 @@
             </div>
         </div>
     </div>
+    {% for item in top_four %}
     <div class="col-lg-3 col-md-6 col-12">
         <div class="box">
             <div class="fx-card-item">
-                <div class="fx-card-avatar fx-overlay-1"> <img
-                        src="{% static 'admin/images/front-end-img/courses/4.jpg' %}" alt="user" class="bber-0 bbsr-0">
+                <div class="fx-card-avatar fx-overlay-1" style="height:170px;"> 
+                    <img src="/uploads/{{ item.featured_image}}" alt="user"
+                        class="bber-0 bbsr-0" >
                     <div class="fx-overlay">
                         <ul class="fx-info">
                             <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
@@ -118,62 +86,13 @@
                     </div>
                 </div>
                 <div class="fx-card-content">
-                    <h4 class="box-title mb-0">Manegement</h4>
+                    <h4 class="box-title mb-0">{{ item.title }}</h4>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-12">
-        <div class="box">
-            <div class="fx-card-item">
-                <div class="fx-card-avatar fx-overlay-1"> <img
-                        src="{% static 'admin/images/front-end-img/courses/9.jpg' %}" alt="user" class="bber-0 bbsr-0">
-                    <div class="fx-overlay">
-                        <ul class="fx-info">
-                            <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="fx-card-content">
-                    <h4 class="box-title mb-0">Networking</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-12">
-        <div class="box">
-            <div class="fx-card-item">
-                <div class="fx-card-avatar fx-overlay-1"> <img
-                        src="{% static 'admin/images/front-end-img/courses/8.jpg' %}" alt="user" class="bber-0 bbsr-0">
-                    <div class="fx-overlay">
-                        <ul class="fx-info">
-                            <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="fx-card-content">
-                    <h4 class="box-title mb-0">Security</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-12">
-        <div class="box">
-            <div class="fx-card-item">
-                <div class="fx-card-avatar fx-overlay-1"> <img
-                        src="{% static 'admin/images/front-end-img/courses/2.jpg' %}" alt="user" class="bber-0 bbsr-0">
-                    <div class="fx-overlay">
-                        <ul class="fx-info">
-                            <li><a class="btn btn-danger no-border" href="javascript:void(0);">View More</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="fx-card-content">
-                    <h4 class="box-title mb-0">Language</h4>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
+
 </div>
 
 {% endblock %}
