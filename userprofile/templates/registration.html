@@ -1,0 +1,665 @@
+{% extends "base_generic_registration.html" %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+{% with title="Registration" %}
+
+{% include "themes/classifiedpro/widgets/title.html" %}
+
+{% endwith %}
+
+<!-- Load React. -->
+<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/axios@0.27.2/dist/axios.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<!-- Load our React component. -->
+<script src="{% static 'fetch_inviter_v3.js' %}" type="text/babel"></script>
+
+<div class="table-responsive"></div>
+<div class=" bg-white border p-2" style="margin-bottom: 20px;">
+  <form method="post">
+
+    {% csrf_token %}
+
+    <div>
+
+
+      <div class="fetch_inviter_wrapper {% if has_error %}d-none{% endif %}">
+
+        <div class="completed">
+          <h4 class="mt-3 mb-3 border-bottom">
+            <div class="rounded-circle bg-secondary text-center text-white d-inline-block"
+              style="font-size:16px; width:25px; height:25px; padding:5px;">1</div>
+            <span class="label" style="font-size:22px;">Search Inviter</span>
+          </h4>
+        </div>
+        <div id="fetch_inviter_container"></div>
+      </div>
+
+      <div class="next-step {% if not has_error %}d-none{% endif %} p-2">
+        <div class="row">
+
+          <div class="col-sm-12 completed">
+            <h3 class="mt-3 mb-3 border-bottom">
+              <div class="rounded-circle bg-secondary text-center text-white d-inline-block"
+                style="font-size:16px; width:25px; height:25px; padding:5px;">2</div>
+              <span style="font-size:22px;">Registration</span>
+            </h3>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="alert alert-primary" role="alert">
+              Account Detail
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group row mb-0">
+              <label for="registration_first_name" class="col-sm-3 col-form-label"><b>First Name</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field user_form.first_name field_class="registration_first_name" show_label=False %}
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_last_name" class="col-sm-3 col-form-label"><b>Last Name</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field user_form.last_name field_class="registration_last_name" show_label=False %}
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_username" class="col-sm-3 col-form-label"><b>Username</b><br><small>i.e.
+                  [0-9a-zA-Z]</small></label>
+              <div class="col-sm-7">
+                {% bootstrap_field user_form.username field_class="registration_username" show_label=False %}
+                <div style="clear:both;"></div>
+                <div class="username-register-warning border border-danger">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_password" class="col-sm-3 col-form-label"><b>Password</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field user_form.password field_class="registration_password" show_label=False %}
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_password_again" class="col-sm-3 col-form-label"><b>Password Again</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field profile_form.password_again field_class="registration_password_again" show_label=False %}
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_email" class="col-sm-3 col-form-label"><b>Email</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field user_form.email field_class="registration_email" show_label=False %}
+                <div style="clear:both;"></div>
+                <div class="email-register-warning border border-danger">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_email_again" class="col-sm-3 col-form-label"><b>Email Again</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field profile_form.email_again field_class="registration_email_again" show_label=False %}
+                <div style="clear:both;"></div>
+                <div class="emailagain-register-warning border border-danger">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_gender" class="col-sm-3 col-form-label"><b>Gender</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field profile_form.gender field_class="registration_gender" show_label=False %}
+              </div>
+            </div>
+
+            <div class="alert alert-primary" role="alert">
+              Personal Detail
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_gender" class="col-sm-3 col-form-label"><b>Date Of Birth</b></label>
+              <div class="col-sm-7">
+
+                <div class="registration_date_wrapper d-flex justify-content-start">
+                  {% bootstrap_field profile_form.date field_class="registration_date" show_label=False %}
+                  {% bootstrap_field profile_form.month field_class="registration_month" show_label=False %}
+                  {% bootstrap_field profile_form.year field_class="registration_year" show_label=False %}
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-sm-7 d-none">
+              {% bootstrap_field profile_form.date_of_birth field_class="registration_date_of_birth" %}
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_gender" class="col-sm-3 col-form-label"><b>Your ID/Passport</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field profile_form.id_passport field_class="registration_id_passport" show_label=False  %}
+              </div>
+            </div>
+            <div class="form-group row mb-0">
+              <label for="registration_gender" class="col-sm-3 col-form-label"><b>Your Country</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field profile_form.country field_class="registration_country" show_label=False %}
+              </div>
+            </div>
+
+            <!--
+            <div class="form-group row mb-0">
+              <label for="registration_gender" class="col-sm-3 col-form-label"><b>Your Location</b></label>
+              <div class="col-sm-7">
+                <div class="form-group">
+                  <select class="form-control" id="id_location" name="location" title="">
+                    <option selected="" value="">---------</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            -->
+
+            <div class="form-group row mb-0">
+              <label for="registration_town" class="col-sm-3 col-form-label"><b>Your City/Town</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field profile_form.town field_class="registration_town" show_label=False %}
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_phone" class="col-sm-3 col-form-label"><b>Your Mobile Phone</b></label>
+              <div class="col-sm-7">
+                {% bootstrap_field profile_form.phone field_class="registration_phone" show_label=False %}
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_agreement" class="col-sm-3 col-form-label"><b></b></label>
+              <div class="col-sm-7">
+                <ul>
+
+                  {% for agreement in agreements %}
+                  <li style="list-style: none">
+                    <input id="agreements.{{ agreement.id }}" class="agreements_{{ agreement.id }}"
+                      name="agreements[{{ agreement.id }}]" type="checkbox" value="{{ agreement.id }}" required>
+                    <small>{{ agreement.agreements }}</small>
+                  </li>
+                  {% endfor %}
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <label for="registration_phone" class="col-sm-3 col-form-label"><b>Security Code</b></label>
+              <div class="col-sm-7">
+                {{ user_form.captcha }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input class="country_id" type="hidden" name="country_id" value="">
+    <input class="inviter_id" type="hidden" name="inviter_id" value="{{ inviter.id }}">
+
+    <div class="text-center reg-step-button {% if not has_error %}d-none{% endif %}">
+      {% bootstrap_button 'Register' extra_classes="register-button mb-3" %}
+    </div>
+
+    <div class=" cont-step-button  {% if not inviter_id %}d-none{% endif %} text-center">
+      <div>
+        <a href="#" class="btn btn-secondary cont_to_reg btn-sm m-1">CONTINUE TO REGISTRATION</a>
+      </div>
+      <a href="{% url 'home' %}" class="btn btn-link btn-sm">CANCEL</a>
+    </div>
+
+
+    <div class="col-sm-12 register-warning {% if has_error %} show-warning {% endif %} ">
+      {{ error_message }}
+    </div>
+
+  </form>
+</div>
+
+<script>
+  {% autoescape off %}
+  {% if inviter_id %}
+  window.inviter = {{ inviter }};
+  {% else %}
+  window.inviter = {};
+  {% endif %}
+  window.has_username_error = false;
+  window.has_email_error = false;
+  window.has_emailagain_error = false;
+  window.username_error_message = '';
+  window.email_error_message = '';
+  window.emailagain_error_message = '';
+  {% endautoescape %}
+
+  $(document).ready(function () {
+
+    $(".registration_username #id_username").keyup(function (e) {
+      var string_txt = $(this).val().toLowerCase()
+      $(this).val(string_txt.toLowerCase())
+    });
+
+    $(".registration_email #id_email").keyup(function (e) {
+      var string_txt = $(this).val().toLowerCase()
+      $(this).val(string_txt.toLowerCase())
+    });
+
+    $(".registration_email_again #id_email_again").keyup(function (e) {
+      var string_txt = $(this).val().toLowerCase()
+      $(this).val(string_txt.toLowerCase())
+    });
+
+    $(".fetch_inviter_wrapper #inputUsername").keyup(function (e) {
+      var string_txt = $(this).val().toLowerCase()
+      $(this).val(string_txt.toLowerCase())
+    });
+
+    // Add refresh button after field (this can be done in the template as well)
+    $('img.captcha').after(
+      $('<a href="#void" class="captcha-refresh"><i class="fa fa-refresh"></i></a>')
+    );
+
+    // Click-handler for the refresh-link
+    $('.captcha-refresh').click(function () {
+      var $form = $(this).parents('form');
+      var url = location.protocol + "//" + window.location.hostname + ":"
+        + location.port + "/captcha/refresh/";
+
+      // Make the AJAX-call
+      $.getJSON(url, {}, function (json) {
+        $form.find('input[name="captcha_0"]').val(json.key);
+        $form.find('img.captcha').attr('src', json.image_url);
+      });
+
+      return false;
+
+    });
+
+    $(".registration_username input").blur(function (e) {
+
+      var url = location.protocol + "//" + window.location.hostname + ":"
+        + location.port + "/user/checkuser/?username=" + $(this).val();
+
+      // Make the AJAX-call
+      $.getJSON(url, {}, function (json) {
+
+        has_username_error = false
+        username_error_message = ''
+
+        $('.username-register-warning').removeClass('show-warning').html("<p></p>");
+
+        if (json.has_error) {
+          has_username_error = json.has_error
+          username_error_message = json.error_message
+          $('.username-register-warning').addClass('show-warning').html("<p>" + username_error_message + "</p>");
+        }
+
+      });
+    });
+
+    $(".registration_email input").blur(function (e) {
+
+      var url = location.protocol + "//" + window.location.hostname + ":"
+        + location.port + "/user/checkuser/?email=" + $(this).val();
+
+      // Make the AJAX-call
+      $.getJSON(url, {}, function (json) {
+
+        has_email_error = false
+        email_error_message = ''
+
+        $('.email-register-warning').removeClass('show-warning').html("<p></p>");
+
+        if (json.has_error) {
+          has_email_error = json.has_error
+          email_error_message = json.error_message
+          $('.email-register-warning').addClass('show-warning').html("<p>" + email_error_message + "</p>");
+        }
+
+      });
+
+    });
+
+    $(".registration_email input").change(function (e) {
+
+      var email = $(".registration_email input").val();
+      var emailagain = $('.registration_email_again input').val();
+
+      console.log(email)
+      console.log(emailagain)
+      console.log(email != emailagain)
+
+      if (email != emailagain) {
+        has_emailagain_error = true
+        emailagain_error_message = 'Emails Did not match.'
+        $('.emailagain-register-warning').addClass('show-warning').html("<p>" + emailagain_error_message + "</p>");
+      } else {
+        has_emailagain_error = false
+        $('.emailagain-register-warning').removeClass('show-warning').html("<p></p>");
+      }
+
+    });
+
+    $(".registration_email_again input").blur(function (e) {
+
+      var email = $('.registration_email input').val();
+      var emailagain = $(this).val();
+
+      console.log(email)
+      console.log(emailagain)
+      console.log(email != emailagain)
+
+      $('.emailagain-register-warning').removeClass('show-warning').html("<p></p>");
+
+      if (email != emailagain) {
+        has_emailagain_error = true
+        emailagain_error_message = 'Emails Did not match.'
+        $('.emailagain-register-warning').addClass('show-warning').html("<p>" + emailagain_error_message + "</p>");
+      } else {
+        has_emailagain_error = false
+        $('.emailagain-register-warning').removeClass('show-warning').html("<p></p>");
+      }
+
+    });
+
+
+    $(".registration_country select").change(function (e) {
+
+      var country_id = $(this).children("option:selected").val();
+
+      var url = location.protocol + "//" + window.location.hostname + ":"
+        + location.port + "/user/location/api/?country_id=" + country_id;
+
+      // Make the AJAX-call
+      $.getJSON(url, {}, function (json) {
+
+        var options = $("#id_location")
+
+        options.find('option').remove()
+        options.append('<option selected="" value="">---------</option>')
+
+        $.each(json, function (index, item) {
+          console.log(item)
+          options.append($('<option value="' + item.id + '" >' + item.name + '</option>'));
+        });
+      });
+    });
+
+    $(".cont_to_reg").click(function (e) {
+      $('.reg-step-button').removeClass('d-none');
+      $('.cont-step-button').addClass('d-none');
+    });
+
+    $(".cont-step-button a").click(function (e) {
+
+      var inviter_id = parseInt($('.inviter_id').val());
+
+      if (!inviter_id) {
+
+        e.preventDefault();
+
+        $('.register-warning').addClass('show-warning');
+        $('.register-warning').html("<p>No Inviter Selected</p>")
+        alert("No Inviter Selected.");
+
+      } else {
+
+        $('.next-step').removeClass('d-none');
+        $('.fetch_inviter_wrapper').addClass('d-none');
+
+      }
+    });
+
+    $(".register-button").click(function (e) {
+
+      var date = $('.registration_date select').val();
+      var month = $('.registration_month select').val();
+      var year = $('.registration_year select').val();
+
+      var date_of_birth = year + '-' + month + '-' + date
+      $('.registration_date_of_birth input').val(date_of_birth);
+
+      var inviter_id = parseInt($('.inviter_id').val());
+      $('.country_id').val($('#id_country').val());
+
+      if (!inviter_id) {
+        e.preventDefault();
+
+        $('.register-warning').addClass('show-warning');
+        $('.register-warning').html("<p>No Inviter Selected</p>")
+        alert("No Inviter Selected.");
+      }
+
+      if (has_username_error) {
+        e.preventDefault();
+        alert(username_error_message);
+      }
+
+
+      if (has_email_error) {
+        e.preventDefault();
+        alert(email_error_message);
+      }
+
+
+      if (has_emailagain_error) {
+        e.preventDefault();
+        alert(emailagain_error_message);
+      }
+    });
+  });
+</script>
+
+<style>
+  .authincation-content .form-control {
+    border: 1px solid #6418C3;
+    background: #E8F0FE;
+    color: black;
+    border-radius: 7px;
+  }
+
+  .registration_date_wrapper select {
+    padding: 5px 0px;
+    margin-left: 2px;
+  }
+
+  #id_captcha_1 {
+    display: inline-block;
+    width: 150px;
+    border: 1px solid #6418C3;
+    border-radius:7px;
+    background: #E8F0FE;
+    color: black;
+  }
+
+  .registration_username #id_username,
+  .registration_email #id_email,
+  .registration_email_again #id_email_again,
+  .fetch_inviter_wrapper #inputUsername {
+    text-transform: lowercase;
+  }
+
+  .ui-datepicker .ui-datepicker-title {
+    margin: 0;
+  }
+
+  .ui-datepicker td span,
+  .ui-datepicker td a {
+    text-align: center;
+    padding: 0px;
+  }
+
+  .ui-datepicker th {
+    padding: 0;
+  }
+
+  .ui-datepicker .ui-datepicker-title select {
+    margin: 1px 0;
+    padding: 3px;
+    height: 30px;
+  }
+
+  .registration_date_wrapper {
+    margin: 0;
+    padding-right: 0;
+    line-height: 40px;
+    text-align: right;
+  }
+
+  .registration_date_wrapper .form-group {
+    width: 80%;
+  }
+
+  .registration_date_wrapper div:nth-child(1){max-width: 45px; margin-right:4px;}
+  .registration_date_wrapper div:nth-child(2){max-width: 110px; margin-right:4px;}
+  .registration_date_wrapper div:nth-child(3){max-width: 65px;}
+
+  .registration_month_wrapper {
+    margin: 0;
+    padding: 0;
+    line-height: 40px;
+    text-align: right;
+    padding-left: 10px;
+  }
+
+  .registration_month_wrapper .form-group {
+    width: 90%;
+  }
+
+  .registration_gender .gender>* {
+    display: inline-block;
+  }
+
+  .background-highlight {
+    margin-bottom: 20px;
+  }
+
+  .register-warning,
+  .username-register-warning,
+  .email-register-warning,
+  .emailagain-register-warning {
+    border: 1px solid #CC0000;
+    background: #fcebee;
+    display: none;
+    border-radius: 4px;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .register-warning p,
+  .username-register-warning p,
+  .email-register-warning p,
+  .emailagain-register-warning p {
+    color: #CC0000;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+
+  .register-warning div,
+  .username-register-warning div,
+  .email-register-warning div,
+  .emailagain-register-warning div {
+    color: #FFFFFF;
+  }
+
+  .inviter-notfound {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #CC0000;
+    background: #fcebee;
+    border-radius: 4px;
+    padding: 5px;
+  }
+
+  .inviter-notfound p {
+    color: #CC0000;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .inviter-notfound div {
+    color: #CC0000;
+  }
+
+  .inviter-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #0a2396;
+    background: #9eaffc;
+    border-radius: 4px;
+  }
+
+  .inviter-info div {
+    color: #FFFFFF;
+  }
+
+  .inviter-info p {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 0;
+    padding: 10px 5px;
+  }
+
+  .show-warning {
+    display: block;
+  }
+
+  .form-inline .form-group {
+    width: auto;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  textarea,
+  select,
+  .tg-select select,
+  .form-control,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  .uneditable-input {
+    padding: 5px 10px;
+  }
+</style>
+{% endblock %}

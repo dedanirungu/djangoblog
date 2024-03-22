@@ -1,0 +1,20 @@
+{% extends "base_generic_manage.html" %}
+
+{% block title %}
+    Delete UserProfile User Confirmation
+{% endblock %}
+
+{% block content %}
+
+<p>Are you sure you want to delete the UserProfile User?</p>
+
+<div class="mb-2">
+  Detail: <i><b>{{ user }}</b></i>
+</div>
+
+<form action="" enctype="multipart/form-data" method="POST">
+  {% csrf_token %}
+  <input class="btn btn-primary btn-sm" type="submit" action="" value="Yes, delete." />
+</form>
+
+{% endblock %}

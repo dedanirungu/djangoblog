@@ -1,0 +1,123 @@
+{% extends "base_generic_manage.html" %}
+
+{% load bootstrap4 %}
+
+{% load common_extras %}
+
+{% block title %}
+Add/Edit UserProfile User
+{% endblock %}
+
+{% block content %}
+<a class="btn btn-dark btn-sm" href="{% url "manage_userprofile_user_list" %}{{ 'manage_userprofile_user_list'|queryparams }}">
+    <i class="fa fa-arrow-left"></i>
+    Back to Listing
+</a>
+
+<form action="{% url 'manage_create_user' %}" enctype="multipart/form-data" method="post">
+
+    {% csrf_token %}
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            {% bootstrap_field user_form.first_name field_class="registration_first_name" %}
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field user_form.last_name field_class="registration_last_name" %}
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field user_form.username field_class="registration_username" %}
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field user_form.password field_class="registration_password" %}
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field user_form.email field_class="registration_email" %}
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field profile_form.phone field_class="registration_phone" %}
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field profile_form.gender field_class="registration_gender" %}
+        </div>
+
+        <div class="col-sm-6">
+            <div class="recordpicker-input">
+
+                {% bootstrap_field profile_form.inviter field_class="affiliate_inviter" %}
+
+                <div class="recordpicker-text">
+                    {{ object.inviter.first_name }} {{ object.inviter.last_name }}
+                    ({{ object.inviter.username }}) {{ object.inviter.email }}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field profile_form.date_of_birth field_class="registration_date_of_birth datepicker" %}
+        </div>
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-6">
+            {% bootstrap_field profile_form.phone field_class="registration_phone" %}
+            {% bootstrap_field profile_form.country field_class="registration_country" %}
+            {% bootstrap_field profile_form.town field_class="registration_town" %}
+        </div>
+        <div class="col-sm-6">
+            {% bootstrap_field profile_form.address field_class="registration_address" %}
+        </div>
+
+        <input class="captcha" type="hidden" name="captcha" value="sfsdfsdf">
+        <input class="captcha" type="hidden" name="captcha_1" value="sfsdfsdf">
+        <input class="captcha" type="hidden" name="captcha_2" value="sfsdfsdf">
+
+        <input class="month" type="hidden" name="month" value="10">
+        <input class="year" type="hidden" name="year" value="2002">
+        <input class="date" type="hidden" name="date" value="20">
+
+
+        {% bootstrap_button 'Save' button_class="btn-success" extra_classes=" stopresent mb-3" %}
+
+    </div>
+</form>
+
+<h2>Generate Users</h2>
+<b class="text-danger"> I hope you know what you are doing!...</b>
+<hr>
+
+<form action="{% url 'manage_generate_user' %}" enctype="multipart/form-data" method="post">
+    
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group"><label for="id_prefix">Username prefix</label>
+                <div class="registration_prefix">
+                    <input type="text" name="prefix" required="" class="form-control" placeholder="prefix" title=""
+                        id="id_prefix">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group"><label for="id_inviter">Inviter Username</label>
+                <div class="registration_inviter">
+                    <input type="text" name="inviter" required="" class="form-control" placeholder="inviter" title=""
+                        id="id_inviter">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group"><label for="id_total">Total</label>
+                <div class="registration_total">
+                    <input type="number" name="total" required="" maxlength="50" class="form-control" placeholder="total"
+                        title="" id="id_total">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% bootstrap_button 'Generate Accounts' button_class="btn-success float-right" extra_classes=" stopresent mb-3" %}
+
+</form>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base_generic_manage.html" %}
+
+{% load bootstrap4 %}
+
+{% load common_extras %}
+
+{% block title %}
+    Add/Edit UserProfile User
+{% endblock %}
+
+{% block content %}
+<a class="btn btn-dark btn-sm" href="{% url "manage_userprofile_user_list" %}{{ 'manage_userprofile_user_list'|queryparams }}">
+    <i class="fa fa-arrow-left"></i>
+    Back to Listing
+</a>
+
+<form action="" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h5 class="text-center bg-light">Profile Details</h5>
+
+            <div class="recordpicker-input">
+                {% bootstrap_field form.inviter  field_class="profile_inviter" %}
+                <div class="recordpicker-text">
+                    {{ object.inviter }}
+                </div>
+            </div>
+
+
+            {% bootstrap_field form.gender  field_class="profile_gender" %}
+            {% bootstrap_field form.date_of_birth  field_class="profile_date_of_birth" %}
+            {% bootstrap_field form.blocked  field_class="profile_blocked" %}
+            
+        </div>
+        
+        <div class="col-sm-6">
+            <h5 class="text-center bg-light">Other Details</h5>
+            
+            {% bootstrap_field form.country  field_class="profile_country" %}
+            {% bootstrap_field form.address  field_class="profile_address" %}
+            {% bootstrap_field form.phone  field_class="profile_phone" %}
+            {% bootstrap_field form.town  field_class="profile_town" %}
+            {% bootstrap_field form.location  field_class="profile_location" %}
+            
+        </div>
+
+    </div>   
+
+    {% bootstrap_button 'Save' button_class="btn-success" extra_classes=" stopresent mb-3" %}
+
+    {% if object.pk %}
+    {% bootstrap_button 'Save As Copy' name="save_method" value="copy"  extra_classes="float-right btn-warning stopresent mb-3" %}
+    {% endif %}
+
+</form>
+{% endblock %}

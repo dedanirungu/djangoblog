@@ -1,0 +1,36 @@
+{% extends "base_generic_registration.html" %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+{% with title="Email Verification" %}
+
+{% include "themes/classifiedpro/widgets/title.html" %}
+
+{% endwith %}
+
+<div class="jumbotron text-center  bg-white" style="margin: 20px;">
+  <h1 class="display-3">{{ title }}</h1>
+  <p class="lead">{{ message }}</p>
+  <hr>
+  {% if not status %}
+  <p>
+    Having trouble? <a href="/contact-us">Contact us</a>
+  </p>
+  {% endif %}
+  <p class="lead">
+    {% if not status %}
+    <a class="btn btn-primary" href="{% url 'home' %}" role="button">Continue to homepage</a>
+    {% else %}
+    <a class="btn btn-primary" href="{% url 'home' %}" role="button">Login</a>
+    {% endif %}
+  </p>
+</div>
+{% endblock %}

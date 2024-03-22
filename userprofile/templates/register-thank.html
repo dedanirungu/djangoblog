@@ -1,0 +1,74 @@
+{% extends "base_generic_registration.html" %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+{% with title="Thank you For Registering" %}
+
+{% include "themes/classifiedpro/widgets/title.html" %}
+
+{% endwith %}
+
+<div class="container text-center  bg-white">
+  {% if error %} 
+  <h1 class="display-3">Error!</h1>
+  {% else %}
+  <h1 class="display-3">Thank You!</h1>
+  {% endif %}
+
+  {% if error %} 
+    <div class="border border-danger text-danger text-center">{{ message }}</div>
+  {% endif %}
+
+  {% if verification_by_code %}
+    <p class="lead">
+      <strong>Please enter code that was sent to your email address</strong>{{ registered_email }}.{{ code }} 
+    </p>
+
+    <form action="" enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="id_code">Enter Code:</label>
+          </div>
+          <div class="col-sm-5">
+
+            <div class="p-1 mb-3">
+                <input class="form-control form-control-sm" id="id_code"
+                        max="999999" min="100000" name="code" placeholder="code"
+                        required="" title="" type="number" style="max-width: 350px;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-sm mb-3">Validate</button>
+      <input name="view" type="hidden" value="user">
+    </form>
+
+  {% else %}
+    <p class="lead">
+      <strong>Please check your email</strong> for further instructions on how to complete your account
+      setup.
+    </p>
+  {% endif %}
+    <hr>
+  <p>
+    Having trouble? <a href="/contact-us">Contact us</a>
+  </p>
+  {% if not verification_by_code %}
+  <p class="lead">
+    <a class="btn btn-primary" href="{% url 'home' %}" role="button">Continue to homepage</a>
+  </p>
+  {% endif %}
+</div>
+{% endblock %}

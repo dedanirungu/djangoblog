@@ -1,0 +1,133 @@
+{% extends "base_generic_manage.html" %}
+
+{% load bootstrap4 %}
+
+{% load common_extras %}
+
+{% block title %}
+Add/Edit UserProfile User
+{% endblock %}
+
+{% block content %}
+<a class="btn btn-dark btn-sm" href="{% url "manage_userprofile_user_list" %}{{ 'manage_userprofile_user_list'|queryparams }}">
+    <i class="fa fa-arrow-left"></i>
+    Back to Listing
+</a>
+
+<div class="row">
+    <div class="col-sm-6">
+        <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+
+            {% bootstrap_form form  size='small' field_class="p-1 mb-3" %}
+            {% bootstrap_button 'Save' button_class="btn-success" extra_classes=" stopresent mb-3" %}
+
+
+        </form>
+    </div>
+    <div class="col-sm-6">
+
+
+        <form action="" enctype="multipart/form-data" method="post">
+            <div class="csrf_token">
+                {% csrf_token %}
+            </div>
+            
+            <h4 class="text-center bg-light">Manage Groups</h4>
+
+            <div class="row pt-3 pb-5">
+
+                {% for group in groups %}
+                <div class="col-sm-4">
+                    <div class="form-check">
+                        <input type="checkbox" value="{{ group.id }}" class="form-check-input" id="group_{{ group.id }}"
+                            {% if group in user_groups %} checked {% endif %}>
+                        <label class="form-check-label" for="group_{{ group.id }}">{{ group.name }}</label>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+
+        </form>
+
+        <form action="{% url 'manage_change_password' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <h4 class="text-center bg-light">Manage Password</h4>
+
+            <div class="form-group"><label for="id_last_name">Password</label>
+                <div class="p-1 mb-3"><input class="form-control form-control-sm" id="id_password" maxlength="150"
+                        name="password" title="" type="password" value=""></div>
+            </div>
+
+            <div class="form-group"><label for="id_last_name">Password Again</label>
+                <div class="p-1 mb-3"><input class="form-control form-control-sm" id="id_password_again" maxlength="150"
+                        name="password_again" title="" type="password" value=""></div>
+            </div>
+
+            <input class="user_id" type="hidden" name="user_id" value="{{ object.id }}" />
+
+            {% bootstrap_button 'Change Password'  extra_classes=" stopresent mb-3" %}
+
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    var action = 'add'
+    var user_id = $('.user_id').val()
+    var csrfmiddlewaretoken = $('.csrf_token input').val()
+
+    $('input:checkbox').change(function () {
+
+        var group_id = $(this).val()
+
+        if (this.checked)
+            action = 'add'
+        else
+            action = 'remove'
+
+        $.ajax({
+                method: "POST",
+                url: "{% url 'manage_change_user_groups' %}",
+                data: {
+                    'user_id': user_id,
+                    'action': action,
+                    'group_id': group_id,
+                    'csrfmiddlewaretoken': csrfmiddlewaretoken,
+                }
+            })
+            .done(function (msg) {
+                console.log(msg);
+            })
+            .fail(function (xhr, err) {
+                var responseTitle = $(xhr.responseText).filter('title').get(0);
+                alert($(responseTitle).text() + "\n" + formatErrorMessage(xhr, err));
+            });
+    });
+
+    function formatErrorMessage(jqXHR, exception) {
+
+        if (jqXHR.status === 0) {
+            return ('Not connected.\nPlease verify your network connection.');
+        } else if (jqXHR.status == 404) {
+            return ('The requested page not found. [404]');
+        } else if (jqXHR.status == 500) {
+            return ('Internal Server Error [500].');
+        } else if (exception === 'parsererror') {
+            return ('Requested JSON parse failed.');
+        } else if (exception === 'timeout') {
+            return ('Time out error.');
+        } else if (exception === 'abort') {
+            return ('Ajax request aborted.');
+        } else {
+            return ('Uncaught Error.\n' + jqXHR.responseText);
+        }
+    }
+</script>
+
+
+{% endblock %}
