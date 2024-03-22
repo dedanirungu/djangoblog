@@ -7,6 +7,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 
+from blog.models import Blog, Category
+
 
 
 @staff_member_required
@@ -78,8 +80,22 @@ def profile(request):
     
 def homepage(request):
     """View function for dashboard of site."""
+
+    top_one = Blog.objects.all().order_by('-created_at')[:1]
+    top_two = Blog.objects.all().order_by('-created_at')[:2]
+    top_three = Blog.objects.all().order_by('-created_at')[:3]
+    most_recent = Blog.objects.all().order_by('-created_at')[:5]
+    most_popular = Blog.objects.all().order_by('-hits')[:5]
+    categories = Category.objects.all()
+
     context = {
         'title': "Top Blog Test App",
+        'most_recent': most_recent,
+        'most_popular': most_popular,
+        'top_three': top_three,
+        'top_two': top_two,
+        'top_one': top_one,
+        'categories': categories
     }
 
     # Render the HTML template index.html with the data in the context variable
@@ -88,25 +104,60 @@ def homepage(request):
 def about(request):
     """View function for dashboard of site."""
     context = {
-        'title': "Top Blog Test App",
+        'title': "About Top Blog Test App",
     }
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'front/about.html', context=context)
 
-def blog(request):
+def blog(request, id):
+    """View function for blog page of site."""
+
+    blog = Blog.objects.get(id=id)
+    print(blog.content)
+
+    context = {
+        'title': "Blogs",
+        'blog': blog,
+    }
+
+    # Render the HTML template blog.html with the data in the context variable
+    return render(request, 'front/blog.html', context=context)
+
+
+def blogs(request):
     """View function for dashboard of site."""
+
+    limit = request.GET.get('limit', 10)
+    page = request.GET.get('page', 1)
+
+    offset = int(page) * int(limit) - int(limit)
+
+    """ Genereate a list of most blogs with implemented pagination """
+    blogs = Blog.objects.all().order_by('-created_at').all()[int(offset):int(limit)]
+    categories = Category.objects.all()
+    most_popular = Blog.objects.all().order_by('-hits')[:5]
+
+    # count blogs for each category and save count in blog_count
+    for category in categories:
+        category.blog_count = Blog.objects.filter(category=category).count()
+
+
     context = {
         'title': "Top Blog Test App",
+        'blogs': blogs,
+        'categories': categories,
+        'most_popular': most_popular,
+
     }
 
     # Render the HTML template index.html with the data in the context variable
-    return render(request, 'front/blog.html', context=context)
+    return render(request, 'front/blogs.html', context=context)
 
 def contact(request):
     """View function for dashboard of site."""
     context = {
-        'title': "Top Blog Test App",
+        'title': "Contact Top Blog Test App",
     }
 
     # Render the HTML template index.html with the data in the context variable

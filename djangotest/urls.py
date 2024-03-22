@@ -45,9 +45,11 @@ urlpatterns += [
 
     path('', views.homepage, name='index'),
     path('', views.homepage, name='home'),
-    path('', views.blog, name='blog'),
-    path('', views.contact, name='contact'),
-    path('', views.about, name='about'),
+
+    path('post/<int:id>', views.blog, name='blog-post'),
+    path('blogs/', views.blogs, name='blogs'),
+    path('contact/', views.contact, name='contact'),
+    path('about/', views.about, name='about'),
     path('manage/', views.manage_dashboard, name='manage_dashboard'),
     path('manage/profile/', views.profile, name='manage-profile'),
     path('accounts/profile/', views.profile, name='accounts-profile'),
